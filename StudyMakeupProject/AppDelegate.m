@@ -20,10 +20,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
 
-	self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
-	MainViewController *homeVc = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
+	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	MainViewController *homeVc = [[MainViewController alloc] init];
+//	MainViewController *homeVc = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
 	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:homeVc];
 	[nav.navigationBar setHidden:YES];
+//	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+//	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+//	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+//	[nav.navigationBar setBarStyle:UIBarStyleBlackOpaque];
+//	[nav.navigationBar setBarStyle:UIBarStyleDefault];
+//	[nav.navigationBar setBarStyle:UIStatusBarStyleLightContent];
+//	[nav.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
+//	[nav.navigationBar setBarStyle:UIBarStyle];
+//	[nav.navigationBar setTintColor:[UIColor redColor]];
+//	[nav.navigationBar setBarTintColor:[UIColor whiteColor]];
 	self.window.rootViewController = nav;
 	[self.window makeKeyAndVisible];
 

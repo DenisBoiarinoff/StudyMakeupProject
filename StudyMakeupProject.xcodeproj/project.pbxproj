@@ -12,8 +12,10 @@
 		590AEB011D125412005EC2B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 590AEB001D125412005EC2B1 /* Assets.xcassets */; };
 		590AEB041D125412005EC2B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 590AEB021D125412005EC2B1 /* LaunchScreen.storyboard */; };
 		590AEB0F1D125412005EC2B1 /* StudyMakeupProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 590AEB0E1D125412005EC2B1 /* StudyMakeupProjectTests.m */; };
+		59B493AE1D12A91000FE63EB /* MainViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59B493AD1D12A91000FE63EB /* MainViewController~ipad.xib */; };
 		59C707911D12551700494961 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C7078F1D12551700494961 /* MainViewController.m */; };
-		59C707921D12551700494961 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59C707901D12551700494961 /* MainViewController.xib */; };
+		59C707921D12551700494961 /* MainViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59C707901D12551700494961 /* MainViewController~iphone.xib */; };
+		59C707941D12693200494961 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C707931D12693200494961 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +39,11 @@
 		590AEB0A1D125412005EC2B1 /* StudyMakeupProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudyMakeupProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		590AEB0E1D125412005EC2B1 /* StudyMakeupProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudyMakeupProjectTests.m; sourceTree = "<group>"; };
 		590AEB101D125412005EC2B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59B493AD1D12A91000FE63EB /* MainViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewController~ipad.xib"; sourceTree = "<group>"; };
 		59C7078E1D12551700494961 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		59C7078F1D12551700494961 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		59C707901D12551700494961 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		59C707901D12551700494961 /* MainViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewController~iphone.xib"; sourceTree = "<group>"; };
+		59C707931D12693200494961 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59C707941D12693200494961 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +68,7 @@
 		590AEAE81D12540F005EC2B1 = {
 			isa = PBXGroup;
 			children = (
+				59C707931D12693200494961 /* MapKit.framework */,
 				590AEAF31D125411005EC2B1 /* StudyMakeupProject */,
 				590AEB0D1D125412005EC2B1 /* StudyMakeupProjectTests */,
 				590AEAF21D12540F005EC2B1 /* Products */,
@@ -89,7 +95,8 @@
 				590AEAF41D125412005EC2B1 /* Supporting Files */,
 				59C7078E1D12551700494961 /* MainViewController.h */,
 				59C7078F1D12551700494961 /* MainViewController.m */,
-				59C707901D12551700494961 /* MainViewController.xib */,
+				59C707901D12551700494961 /* MainViewController~iphone.xib */,
+				59B493AD1D12A91000FE63EB /* MainViewController~ipad.xib */,
 			);
 			path = StudyMakeupProject;
 			sourceTree = "<group>";
@@ -193,9 +200,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59B493AE1D12A91000FE63EB /* MainViewController~ipad.xib in Resources */,
 				590AEB041D125412005EC2B1 /* LaunchScreen.storyboard in Resources */,
 				590AEB011D125412005EC2B1 /* Assets.xcassets in Resources */,
-				59C707921D12551700494961 /* MainViewController.xib in Resources */,
+				59C707921D12551700494961 /* MainViewController~iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
