@@ -22,6 +22,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *sinceTextLbl;
 @property (weak, nonatomic) IBOutlet UILabel *upToTextLbl;
 
+@property (weak, nonatomic) IBOutlet UIButton *sinceDate;
+@property (weak, nonatomic) IBOutlet UIButton *upToDate;
+
+@property (weak, nonatomic) IBOutlet UIButton *backBtnL;
+
 - (IBAction)dayPicker:(id)sender;
 - (IBAction)setTime:(id)sender;
 - (IBAction)activeSwitch:(id)sender;

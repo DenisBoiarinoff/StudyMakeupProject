@@ -6,21 +6,24 @@
 //  Copyright © 2016 Rhinoda. All rights reserved.
 //
 
+#import <sys/sysctl.h>
+#include <sys/types.h>
+
 #import "MainViewController.h"
 
 @interface MainViewController () <UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic, strong) UIButton *backBtn;
 
-@property (nonatomic, strong) UIColor *activeDayColor;
-@property (nonatomic, strong) UIColor *pasiveDayColor;
+//@property (nonatomic, strong) UIColor *activeDayColor;
+//@property (nonatomic, strong) UIColor *pasiveDayColor;
 
 @end
 
 @implementation MainViewController
 
 static NSString *btnBackImgUrl = @"backWhite";
-static NSString *btnBackImgUrl2 = @"pack_05";
+//static NSString *btnBackImgUrl2 = @"pack_05";
 
 
 
@@ -45,35 +48,75 @@ static NSString *btnBackImgUrl2 = @"pack_05";
 
 	NSLog(@"screen size: width - %d height - %d", parentWidth, parentHeight);
 
-	self.activeDayColor = [UIColor colorWithRed:0. green:0. blue:0. alpha:1.];
-	self.pasiveDayColor = [UIColor colorWithRed:161. green:161. blue:161. alpha:1.];
+//	self.activeDayColor = [UIColor colorWithRed:0. green:0. blue:0. alpha:1.];
+//	self.pasiveDayColor = [UIColor colorWithRed:161. green:161. blue:161. alpha:1.];
 
 	UIImage *backImage = [UIImage imageNamed:btnBackImgUrl];
 
+
+//	CGRect backBtnFrame = CGRectMake(self.weekView.frame.origin.x,
+//									 (parentHeight * 0.03)/2,
+//									 parentWidth * 0.17,
+//									 parentHeight * 0.06);
+
 	CGRect backBtnFrame = CGRectMake(self.weekView.frame.origin.x,
 									 (parentHeight * 0.03)/2,
-									 parentWidth * 0.17,
+									 parentWidth * 0.3,
 									 parentHeight * 0.06);
 
 	self.backBtn = [[UIButton alloc] init];
 	[self.backBtn setFrame:backBtnFrame];
+	self.backBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	[self.backBtn setContentEdgeInsets:UIEdgeInsetsZero];
 	[self.backBtn setTitle:@"Back" forState:UIControlStateNormal];
+//	[self.backBtn setTitle:@"B" forState:UIControlStateNormal];
 	[self.backBtn.titleLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:0.55 * self.backBtn.frame.size.height]];
+//	self.backBtn.titleLabel.adjustsFontSizeToFitWidth = true;
 	[self.backBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
 	[self.backBtn setImage:backImage forState:UIControlStateNormal];
+//	[[self.backBtn imageView] setContentMode: UIViewContentModeScaleAspectFit];
 	[self.backBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, self.backBtn.frame.size.width * 0.80)];
 
-	self.backBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//	self.backBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
 
-//	[self.backBtn.layer setBorderWidth:2];
-//	[self.backBtn.layer setBorderColor:([UIColor blackColor]).CGColor];
+	[self.backBtn.layer setBorderWidth:1];
+	[self.backBtn.layer setBorderColor:([UIColor blackColor]).CGColor];
+	[self.backBtn.titleLabel.layer setBorderWidth:1];
+	[self.backBtn.titleLabel.layer setBorderColor:([UIColor blueColor]).CGColor];
+	[self.backBtn.imageView.layer setBorderWidth:2];
+	[self.backBtn.imageView.layer setBorderColor:([UIColor greenColor]).CGColor];
 
-	[self.navigationBar addSubview:self.backBtn];
+//	[self.navigationBar addSubview:self.backBtn];
 
-	UIButton *btn = [self.view viewWithTag:31];
-	[btn setTitle:@"00 : 00" forState:UIControlStateNormal];
-	btn = [self.view viewWithTag:32];
-	[btn setTitle:@"00 : 00" forState:UIControlStateNormal];
+	[self.sinceDate setTitle:@"00 : 00" forState:UIControlStateNormal];
+	self.sinceDate.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.06];
+	self.sinceDate.titleLabel.adjustsFontSizeToFitWidth = true;
+//	[self.sinceDate.layer setBorderWidth:1];
+//	[self.sinceDate.layer setBorderColor:([UIColor blackColor]).CGColor];
+
+
+	[self.upToDate setTitle:@"00 : 00" forState:UIControlStateNormal];
+	self.upToDate.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.06];
+	self.upToDate.titleLabel.adjustsFontSizeToFitWidth = true;
+//	[self.upToDate.layer setBorderWidth:1];
+//	[self.upToDate.layer setBorderColor:([UIColor blackColor]).CGColor];
+
+	NSString *platform = [self platformRawString];
+
+	NSString *iOSVersion = [[UIDevice currentDevice] systemVersion];
+	NSLog(@"%@",iOSVersion);
+	NSLog(@"%@",[self platformRawString]);
+
+	for (int i = 51; i < 58; i++) {
+		UIButton *btn = [self.view viewWithTag:i];
+		btn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.03];
+
+		if ([platform isEqualToString:@"iPhone4,1"]) {
+			NSLog(@"iPhone 4S");
+			btn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
+		}
+
+	}
 
 //	[self.infoLabel setFont:[UIFont fontWithName:@"Arial" size:0.2 * self.infoLabel.superview.frame.size.height]];
 }
@@ -192,6 +235,42 @@ static NSString *btnBackImgUrl2 = @"pack_05";
 							   inView:(inout UIView *__autoreleasing  _Nonnull *)view
 {
 	// called when the Popover changes positon
+}
+
+
+- (NSString *)platformRawString {
+	size_t size;
+	sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+	char *machine = malloc(size);
+	sysctlbyname("hw.machine", machine, &size, NULL, 0);
+	NSString *platform = [NSString stringWithUTF8String:machine];
+	free(machine);
+	NSLog(@"%@",platform);
+	return platform;
+}
+- (NSString *)platformNiceString {
+	NSString *platform = [self platformRawString];
+	if ([platform isEqualToString:@"iPhone1,1"])    return @"iPhone 1G";
+	if ([platform isEqualToString:@"iPhone1,2"])    return @"iPhone 3G";
+	if ([platform isEqualToString:@"iPhone2,1"])    return @"iPhone 3GS";
+	if ([platform isEqualToString:@"iPhone3,1"])    return @"iPhone 4";
+	if ([platform isEqualToString:@"iPhone3,3"])    return @"Verizon iPhone 4";
+	if ([platform isEqualToString:@"iPhone4,1"])    return @"iPhone 4S";
+	if ([platform isEqualToString:@"iPhone5,1"])    return @"iPhone 5";
+	if ([platform isEqualToString:@"iPod1,1"])      return @"iPod Touch 1G";
+	if ([platform isEqualToString:@"iPod2,1"])      return @"iPod Touch 2G";
+	if ([platform isEqualToString:@"iPod3,1"])      return @"iPod Touch 3G";
+	if ([platform isEqualToString:@"iPod4,1"])      return @"iPod Touch 4G";
+	if ([platform isEqualToString:@"iPad1,1"])      return @"iPad 1";
+	if ([platform isEqualToString:@"iPad2,1"])      return @"iPad 2 (WiFi)";
+	if ([platform isEqualToString:@"iPad2,2"])      return @"iPad 2 (GSM)";
+	if ([platform isEqualToString:@"iPad2,3"])      return @"iPad 2 (CDMA)";
+	if ([platform isEqualToString:@"iPad3,1"])      return @"iPad 3 (WiFi)";
+	if ([platform isEqualToString:@"iPad3,2"])      return @"iPad 3 (4G,2)";
+	if ([platform isEqualToString:@"iPad3,3"])      return @"iPad 3 (4G,3)";
+	if ([platform isEqualToString:@"i386"])         return @"Simulator";
+	if ([platform isEqualToString:@"x86_64"])       return @"Simulator";
+	return platform;
 }
 
 @end
