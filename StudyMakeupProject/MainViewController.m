@@ -11,36 +11,15 @@
 
 #import "MainViewController.h"
 
-@interface MainViewController () <UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate>
+@interface MainViewController () <UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic, strong) UIButton *backBtn;
-
-//@property (nonatomic, strong) UIColor *activeDayColor;
-//@property (nonatomic, strong) UIColor *pasiveDayColor;
 
 @end
 
 @implementation MainViewController
 
-static NSString *btnBackImgUrl = @"backWhite";
-static NSString *btnBackImgUrl2 = @"pack_05";
-
 int activeBtnTag;
-
-
-
-//- (id)init
-//{
-////	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-//////		self = [super initWithNibName:@"MainViewController~iphone" bundle:nil];
-////		self = [super initWithNibName:@"MainViewController~ipad" bundle:nil];
-////	} else {
-//////		self = [super initWithNibName:@"MainViewController~iphone" bundle:nil];
-////		self = [super initWithNibName:@"MainViewController~ipad" bundle:nil];
-////	}
-//	if (self) { /* initialize other ivars */ }
-//	return self;
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,6 +28,14 @@ int activeBtnTag;
 	int parentHeight = [[UIScreen mainScreen] bounds].size.height;
 
 	NSLog(@"screen size: width - %d height - %d", parentWidth, parentHeight);
+
+	NSString *deviceType = [UIDevice currentDevice].model;
+	NSLog(@"%@",deviceType);
+
+
+	if([deviceType isEqualToString:@"iPad"]) {
+		self.infoLabel.font = [UIFont systemFontOfSize: parentHeight * 0.04	];
+	}
 
 	[self.sinceDate setTitle:@"00 : 00" forState:UIControlStateNormal];
 	self.sinceDate.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.06];
@@ -60,8 +47,6 @@ int activeBtnTag;
 	[self.upToDate setTitle:@"00 : 00" forState:UIControlStateNormal];
 	self.upToDate.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.06];
 	self.upToDate.titleLabel.adjustsFontSizeToFitWidth = true;
-//	[self.upToDate.layer setBorderWidth:1];
-//	[self.upToDate.layer setBorderColor:([UIColor blackColor]).CGColor];
 
 	NSString *platform = [self platformRawString];
 
@@ -80,7 +65,6 @@ int activeBtnTag;
 
 	}
 
-//	[self.infoLabel setFont:[UIFont fontWithName:@"Arial" size:0.2 * self.infoLabel.superview.frame.size.height]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,7 +82,7 @@ int activeBtnTag;
 }
 */
 
-
+#pragma mark - Button Actions
 
 - (IBAction)dayPicker:(id)sender {
 	UIButton *btn = (UIButton *)sender;
@@ -111,15 +95,10 @@ int activeBtnTag;
 	NSLog(@"setTime");
 	UIViewController *viewController = [[UIViewController alloc]init];
 	[viewController.view setBackgroundColor:[UIColor whiteColor]];
-//	[viewController.view setFrame:CGRectMake(0, 0, 330, 420)];
 
 	UIButton *source = (UIButton *)sender;
 
 	self.datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(65, 0, 250, 350)];
-//	self.datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0.1 * viewController.view.frame.size.width,
-//																	0,
-//																	0.8 * viewController.view.frame.size.width,
-//																	0.4 * viewController.view.frame.size.height)];
 
 	NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"NL"];
 	[self.datepicker setLocale:locale];
@@ -128,12 +107,6 @@ int activeBtnTag;
 	self.datepicker.date = [NSDate date];
 
 	activeBtnTag = (int)[source tag];
-
-//	if ([source tag] == 31) {
-//		[self.datepicker addTarget:self action:@selector(result1:) forControlEvents:UIControlEventValueChanged];
-//	} else {
-//		[self.datepicker addTarget:self action:@selector(result2:) forControlEvents:UIControlEventValueChanged];
-//	}
 
 	[viewController.view addSubview:self.datepicker];
 
@@ -150,7 +123,6 @@ int activeBtnTag;
 	[viewController.view addSubview:selectBtn];
 
 	UIButton *cancelBtn = [[UIButton alloc] init];
-	//	[selectBtn setBackgroundColor:[UIColor colorWithRed:71. green:139. blue:202. alpha:1.]];
 	[cancelBtn setBackgroundColor:[UIColor blueColor]];
 	[cancelBtn setFrame:CGRectMake(65, 400, 250, 30)];
 	[cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
@@ -190,33 +162,13 @@ int activeBtnTag;
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)eventBtnAction:(id)sender {
-	UIButton *btn = (UIButton *)sender;
-	[btn setSelected:![btn isSelected]];
-}
-
 - (void) cancelDate:(id) sender {
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) result1:(id) sender {
-
-//	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//	[dateFormatter setDateFormat:@"HH : mm"];
-//	NSString *strDate = [dateFormatter stringFromDate:((UIDatePicker *) sender).date];
-//
-//	UIButton *btn = [self.view viewWithTag:31];
-//	[btn setTitle:strDate forState:UIControlStateNormal];
-}
-
-- (void) result2:(id) sender {
-
-//	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//	[dateFormatter setDateFormat:@"HH : mm"];
-//	NSString *strDate = [dateFormatter stringFromDate:((UIDatePicker *) sender).date];
-//
-//	UIButton *btn = [self.view viewWithTag:32];
-//	[btn setTitle:strDate forState:UIControlStateNormal];
+- (IBAction)eventBtnAction:(id)sender {
+	UIButton *btn = (UIButton *)sender;
+	[btn setSelected:![btn isSelected]];
 }
 
 # pragma mark - Popover Presentation Controller Delegate
