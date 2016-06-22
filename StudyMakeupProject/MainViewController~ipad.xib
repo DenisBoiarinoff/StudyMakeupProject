@@ -241,26 +241,35 @@
                                 </mask>
                             </variation>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFn-Sk-pvB">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFn-Sk-pvB">
                             <rect key="frame" x="231" y="85" width="138" height="30"/>
-                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="40"/>
                             <state key="normal" backgroundImage="soundPadBtn">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <state key="selected" backgroundImage="soundPadBtnSelected"/>
+                            <connections>
+                                <action selector="eventBtnAction:" destination="-1" eventType="touchUpInside" id="TmL-kO-1TL"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcI-n9-rgu">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcI-n9-rgu">
                             <rect key="frame" x="389" y="85" width="138" height="30"/>
-                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="40"/>
                             <state key="normal" backgroundImage="popupPadBtn">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <state key="selected" backgroundImage="popupPadBtnSelected"/>
+                            <connections>
+                                <action selector="eventBtnAction:" destination="-1" eventType="touchUpInside" id="yxl-1q-Cg2"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l71-vi-GXq">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l71-vi-GXq">
                             <rect key="frame" x="73" y="85" width="138" height="30"/>
-                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="40"/>
                             <state key="normal" backgroundImage="vibroPadBtn">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <state key="selected" backgroundImage="vibroPadBtnSelected"/>
+                            <connections>
+                                <action selector="eventBtnAction:" destination="-1" eventType="touchUpInside" id="mc1-ZL-5gw"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -305,25 +314,25 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AM" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="S5l-Wz-b1b">
                             <rect key="frame" x="448" y="3" width="27" height="43"/>
                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="38"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AM" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="iOz-OL-n5A">
                             <rect key="frame" x="448" y="51" width="27" height="43"/>
                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="38"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UP  TO  DAE:" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Fwc-qg-3mo">
                             <rect key="frame" x="90" y="55" width="182" height="36"/>
                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="90"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SINCE DATE:" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="WRQ-Dc-utX">
                             <rect key="frame" x="90" y="8" width="182" height="36"/>
                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="90"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -442,7 +451,10 @@
         <image name="MultyBtnIpad" width="1374" height="145"/>
         <image name="backPad" width="248" height="117"/>
         <image name="popupPadBtn" width="357" height="111"/>
+        <image name="popupPadBtnSelected" width="357" height="111"/>
         <image name="soundPadBtn" width="356" height="111"/>
+        <image name="soundPadBtnSelected" width="356" height="111"/>
         <image name="vibroPadBtn" width="189" height="59"/>
+        <image name="vibroPadBtnSelected" width="360" height="111"/>
     </resources>
 </document>

@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StudyMakeupProject/MainViewController.m"
-            timestampString = "488202493.166764"
+            timestampString = "488270345.420921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "-setTime:"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "-selectDate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

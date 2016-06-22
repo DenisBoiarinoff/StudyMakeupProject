@@ -23,7 +23,9 @@
 @implementation MainViewController
 
 static NSString *btnBackImgUrl = @"backWhite";
-//static NSString *btnBackImgUrl2 = @"pack_05";
+static NSString *btnBackImgUrl2 = @"pack_05";
+
+int activeBtnTag;
 
 
 
@@ -47,46 +49,6 @@ static NSString *btnBackImgUrl = @"backWhite";
 	int parentHeight = [[UIScreen mainScreen] bounds].size.height;
 
 	NSLog(@"screen size: width - %d height - %d", parentWidth, parentHeight);
-
-//	self.activeDayColor = [UIColor colorWithRed:0. green:0. blue:0. alpha:1.];
-//	self.pasiveDayColor = [UIColor colorWithRed:161. green:161. blue:161. alpha:1.];
-
-	UIImage *backImage = [UIImage imageNamed:btnBackImgUrl];
-
-
-//	CGRect backBtnFrame = CGRectMake(self.weekView.frame.origin.x,
-//									 (parentHeight * 0.03)/2,
-//									 parentWidth * 0.17,
-//									 parentHeight * 0.06);
-
-	CGRect backBtnFrame = CGRectMake(self.weekView.frame.origin.x,
-									 (parentHeight * 0.03)/2,
-									 parentWidth * 0.3,
-									 parentHeight * 0.06);
-
-	self.backBtn = [[UIButton alloc] init];
-	[self.backBtn setFrame:backBtnFrame];
-	self.backBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-	[self.backBtn setContentEdgeInsets:UIEdgeInsetsZero];
-	[self.backBtn setTitle:@"Back" forState:UIControlStateNormal];
-//	[self.backBtn setTitle:@"B" forState:UIControlStateNormal];
-	[self.backBtn.titleLabel setFont:[UIFont fontWithName:@"Arial-BoldMT" size:0.55 * self.backBtn.frame.size.height]];
-//	self.backBtn.titleLabel.adjustsFontSizeToFitWidth = true;
-	[self.backBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-	[self.backBtn setImage:backImage forState:UIControlStateNormal];
-//	[[self.backBtn imageView] setContentMode: UIViewContentModeScaleAspectFit];
-	[self.backBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, self.backBtn.frame.size.width * 0.80)];
-
-//	self.backBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-
-	[self.backBtn.layer setBorderWidth:1];
-	[self.backBtn.layer setBorderColor:([UIColor blackColor]).CGColor];
-	[self.backBtn.titleLabel.layer setBorderWidth:1];
-	[self.backBtn.titleLabel.layer setBorderColor:([UIColor blueColor]).CGColor];
-	[self.backBtn.imageView.layer setBorderWidth:2];
-	[self.backBtn.imageView.layer setBorderColor:([UIColor greenColor]).CGColor];
-
-//	[self.navigationBar addSubview:self.backBtn];
 
 	[self.sinceDate setTitle:@"00 : 00" forState:UIControlStateNormal];
 	self.sinceDate.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.06];
@@ -148,10 +110,16 @@ static NSString *btnBackImgUrl = @"backWhite";
 
 	NSLog(@"setTime");
 	UIViewController *viewController = [[UIViewController alloc]init];
+	[viewController.view setBackgroundColor:[UIColor whiteColor]];
+//	[viewController.view setFrame:CGRectMake(0, 0, 330, 420)];
 
 	UIButton *source = (UIButton *)sender;
 
-	self.datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 350, 400)];
+	self.datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(65, 0, 250, 350)];
+//	self.datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0.1 * viewController.view.frame.size.width,
+//																	0,
+//																	0.8 * viewController.view.frame.size.width,
+//																	0.4 * viewController.view.frame.size.height)];
 
 	NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"NL"];
 	[self.datepicker setLocale:locale];
@@ -159,23 +127,39 @@ static NSString *btnBackImgUrl = @"backWhite";
 	self.datepicker.hidden = NO;
 	self.datepicker.date = [NSDate date];
 
-	if ([source tag] == 31) {
-		[self.datepicker addTarget:self action:@selector(result1:) forControlEvents:UIControlEventValueChanged];
-	} else {
-		[self.datepicker addTarget:self action:@selector(result2:) forControlEvents:UIControlEventValueChanged];
-	}
+	activeBtnTag = (int)[source tag];
+
+//	if ([source tag] == 31) {
+//		[self.datepicker addTarget:self action:@selector(result1:) forControlEvents:UIControlEventValueChanged];
+//	} else {
+//		[self.datepicker addTarget:self action:@selector(result2:) forControlEvents:UIControlEventValueChanged];
+//	}
 
 	[viewController.view addSubview:self.datepicker];
 
-	//	UIButton *btn = [[UIButton alloc] init];
-	//	[btn setBackgroundColor:[UIColor redColor]];
-	//	[btn setTitle:@"OK" forState:UIControlStateNormal];
-	//	[btn setFrame:CGRectMake(0, 0, 50, 50)];
-	//	[btn addTarget:self
-	//			action:@selector(closePopup)
-	//  forControlEvents:UIControlEventTouchUpInside];
-	//
-	//	[viewController.view addSubview:btn];
+	UIButton *selectBtn = [[UIButton alloc] init];
+//	[selectBtn setBackgroundColor:[UIColor colorWithRed:71. green:139. blue:202. alpha:1.]];
+	[selectBtn setBackgroundColor:[UIColor blueColor]];
+	[selectBtn setFrame:CGRectMake(65, 360, 250, 30)];
+	[selectBtn setTitle:@"Ok" forState:UIControlStateNormal];
+	[selectBtn.layer setCornerRadius:10];
+	[selectBtn addTarget:self
+				  action:@selector(selectDate:)
+        forControlEvents:UIControlEventTouchUpInside];
+
+	[viewController.view addSubview:selectBtn];
+
+	UIButton *cancelBtn = [[UIButton alloc] init];
+	//	[selectBtn setBackgroundColor:[UIColor colorWithRed:71. green:139. blue:202. alpha:1.]];
+	[cancelBtn setBackgroundColor:[UIColor blueColor]];
+	[cancelBtn setFrame:CGRectMake(65, 400, 250, 30)];
+	[cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
+	[cancelBtn.layer setCornerRadius:10];
+	[cancelBtn addTarget:self
+				  action:@selector(cancelDate:)
+		forControlEvents:UIControlEventTouchUpInside];
+
+	[viewController.view addSubview:cancelBtn];
 
 	viewController.modalPresentationStyle = UIModalPresentationPopover;
 	[self presentViewController:viewController animated:YES completion:nil];
@@ -195,24 +179,44 @@ static NSString *btnBackImgUrl = @"backWhite";
 	[btn setSelected:![btn isSelected]];
 }
 
-- (void) result1:(id) sender {
-
+- (void) selectDate:(id) sender {
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:@"HH : mm"];
-	NSString *strDate = [dateFormatter stringFromDate:((UIDatePicker *) sender).date];
+	NSString *strDate = [dateFormatter stringFromDate:self.datepicker.date];
 
-	UIButton *btn = [self.view viewWithTag:31];
+	UIButton *btn = [self.view viewWithTag:activeBtnTag];
 	[btn setTitle:strDate forState:UIControlStateNormal];
+
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)eventBtnAction:(id)sender {
+	UIButton *btn = (UIButton *)sender;
+	[btn setSelected:![btn isSelected]];
+}
+
+- (void) cancelDate:(id) sender {
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) result1:(id) sender {
+
+//	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//	[dateFormatter setDateFormat:@"HH : mm"];
+//	NSString *strDate = [dateFormatter stringFromDate:((UIDatePicker *) sender).date];
+//
+//	UIButton *btn = [self.view viewWithTag:31];
+//	[btn setTitle:strDate forState:UIControlStateNormal];
 }
 
 - (void) result2:(id) sender {
 
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setDateFormat:@"HH : mm"];
-	NSString *strDate = [dateFormatter stringFromDate:((UIDatePicker *) sender).date];
-
-	UIButton *btn = [self.view viewWithTag:32];
-	[btn setTitle:strDate forState:UIControlStateNormal];
+//	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//	[dateFormatter setDateFormat:@"HH : mm"];
+//	NSString *strDate = [dateFormatter stringFromDate:((UIDatePicker *) sender).date];
+//
+//	UIButton *btn = [self.view viewWithTag:32];
+//	[btn setTitle:strDate forState:UIControlStateNormal];
 }
 
 # pragma mark - Popover Presentation Controller Delegate
