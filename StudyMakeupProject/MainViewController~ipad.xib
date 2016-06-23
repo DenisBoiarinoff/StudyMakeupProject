@@ -103,7 +103,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N0q-xj-LzH">
-                    <rect key="frame" x="0.0" y="258" width="600" height="126"/>
+                    <rect key="frame" x="0.0" y="254" width="600" height="126"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EWl-in-FTa">
                             <rect key="frame" x="30" y="17" width="540" height="42"/>
@@ -273,7 +273,7 @@
                     </constraints>
                 </view>
                 <view tag="30" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C5d-DL-scw">
-                    <rect key="frame" x="0.0" y="159" width="600" height="96"/>
+                    <rect key="frame" x="0.0" y="157" width="600" height="96"/>
                     <subviews>
                         <button opaque="NO" tag="32" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yC5-BJ-o8E">
                             <rect key="frame" x="282" y="63" width="156" height="18"/>
@@ -339,7 +339,7 @@
                     </constraints>
                 </view>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cgH-0n-x8G">
-                    <rect key="frame" x="0.0" y="384" width="600" height="216"/>
+                    <rect key="frame" x="0.0" y="380" width="600" height="220"/>
                 </mapView>
             </subviews>
             <color key="backgroundColor" red="0.69803921570000005" green="0.69803921570000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -360,7 +360,7 @@
                 <constraint firstAttribute="trailing" secondItem="cgH-0n-x8G" secondAttribute="trailing" id="MXP-DK-8TN"/>
                 <constraint firstItem="cgH-0n-x8G" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NLk-ck-3QB"/>
                 <constraint firstItem="N0q-xj-LzH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Nac-gS-62H"/>
-                <constraint firstItem="C5d-DL-scw" firstAttribute="top" secondItem="cXs-L7-uvE" secondAttribute="bottom" constant="3" id="PGN-8k-V31"/>
+                <constraint firstItem="C5d-DL-scw" firstAttribute="top" secondItem="cXs-L7-uvE" secondAttribute="bottom" constant="1" id="PGN-8k-V31"/>
                 <constraint firstItem="gfd-g6-P8M" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.37:1" id="SKE-Hx-s4p"/>
                 <constraint firstItem="cgH-0n-x8G" firstAttribute="top" secondItem="N0q-xj-LzH" secondAttribute="bottom" id="SeY-zM-Nar"/>
                 <constraint firstItem="opf-Un-Shb" firstAttribute="leading" secondItem="fyl-6C-wAb" secondAttribute="leading" id="TBQ-0C-IMP"/>
@@ -371,7 +371,7 @@
                 <constraint firstItem="EWl-in-FTa" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.07:1" id="aud-de-e1H"/>
                 <constraint firstAttribute="trailing" secondItem="jV5-vu-3Oy" secondAttribute="trailing" id="bFl-dI-0bD"/>
                 <constraint firstItem="yC5-BJ-o8E" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.03:1" id="d4w-Z4-oRB"/>
-                <constraint firstItem="N0q-xj-LzH" firstAttribute="top" secondItem="C5d-DL-scw" secondAttribute="bottom" constant="3" id="e7E-PQ-OYa"/>
+                <constraint firstItem="N0q-xj-LzH" firstAttribute="top" secondItem="C5d-DL-scw" secondAttribute="bottom" constant="1" id="e7E-PQ-OYa"/>
                 <constraint firstAttribute="trailing" secondItem="C5d-DL-scw" secondAttribute="trailing" id="eQn-IQ-8Qk"/>
                 <constraint firstItem="C5d-DL-scw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gSC-Sp-UYR"/>
                 <constraint firstItem="vam-Tf-02o" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.03:1" id="gYv-Ee-f0o"/>
