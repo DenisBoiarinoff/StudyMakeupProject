@@ -10,10 +10,12 @@
 #include <sys/types.h>
 
 #import "MainViewController.h"
+#import "UIButton+Date.h"
 
 @interface MainViewController () <UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic, strong) UIButton *backBtn;
+@property (nonatomic, strong) NSDate *curentDate;
 
 @end
 
@@ -23,6 +25,14 @@ int activeBtnTag;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+	if (!self.popupVC) {
+		self.popupVC = [[ViewController alloc] init];
+
+		self.popupVC.delegate = self;
+
+		self.popupVC.modalPresentationStyle = UIModalPresentationPopover;
+	}
 
 	int parentWidth = [[UIScreen mainScreen] bounds].size.width;
 	int parentHeight = [[UIScreen mainScreen] bounds].size.height;
@@ -38,6 +48,7 @@ int activeBtnTag;
 	}
 
 	[self.sinceDate setTitle:@"00 : 00" forState:UIControlStateNormal];
+	[self.sinceDate setDate:[NSDate date]];
 	self.sinceDate.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.06];
 	self.sinceDate.titleLabel.adjustsFontSizeToFitWidth = true;
 //	[self.sinceDate.layer setBorderWidth:1];
@@ -45,6 +56,7 @@ int activeBtnTag;
 
 
 	[self.upToDate setTitle:@"00 : 00" forState:UIControlStateNormal];
+	[self.upToDate setDate:[NSDate date]];
 	self.upToDate.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.06];
 	self.upToDate.titleLabel.adjustsFontSizeToFitWidth = true;
 
@@ -92,51 +104,15 @@ int activeBtnTag;
 
 - (IBAction)setTime:(id)sender {
 
-	NSLog(@"setTime");
-	UIViewController *viewController = [[UIViewController alloc]init];
-	[viewController.view setBackgroundColor:[UIColor whiteColor]];
-
 	UIButton *source = (UIButton *)sender;
-
-	self.datepicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(65, 0, 250, 350)];
-
-	NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"NL"];
-	[self.datepicker setLocale:locale];
-	self.datepicker.datePickerMode = UIDatePickerModeTime;
-	self.datepicker.hidden = NO;
-	self.datepicker.date = [NSDate date];
 
 	activeBtnTag = (int)[source tag];
 
-	[viewController.view addSubview:self.datepicker];
+	[self.popupVC chooseDate:source.date];
 
-	UIButton *selectBtn = [[UIButton alloc] init];
-//	[selectBtn setBackgroundColor:[UIColor colorWithRed:71. green:139. blue:202. alpha:1.]];
-	[selectBtn setBackgroundColor:[UIColor blueColor]];
-	[selectBtn setFrame:CGRectMake(65, 360, 250, 30)];
-	[selectBtn setTitle:@"Ok" forState:UIControlStateNormal];
-	[selectBtn.layer setCornerRadius:10];
-	[selectBtn addTarget:self
-				  action:@selector(selectDate:)
-        forControlEvents:UIControlEventTouchUpInside];
+	[self presentViewController:self.popupVC animated:YES completion:nil];
 
-	[viewController.view addSubview:selectBtn];
-
-	UIButton *cancelBtn = [[UIButton alloc] init];
-	[cancelBtn setBackgroundColor:[UIColor blueColor]];
-	[cancelBtn setFrame:CGRectMake(65, 400, 250, 30)];
-	[cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
-	[cancelBtn.layer setCornerRadius:10];
-	[cancelBtn addTarget:self
-				  action:@selector(cancelDate:)
-		forControlEvents:UIControlEventTouchUpInside];
-
-	[viewController.view addSubview:cancelBtn];
-
-	viewController.modalPresentationStyle = UIModalPresentationPopover;
-	[self presentViewController:viewController animated:YES completion:nil];
-
-	UIPopoverPresentationController *popController = [viewController popoverPresentationController];
+	UIPopoverPresentationController *popController = [self.popupVC popoverPresentationController];
 	popController.permittedArrowDirections = UIPopoverArrowDirectionAny;
 
 	popController.sourceView = [self.view viewWithTag:30];
@@ -151,24 +127,49 @@ int activeBtnTag;
 	[btn setSelected:![btn isSelected]];
 }
 
-- (void) selectDate:(id) sender {
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setDateFormat:@"HH : mm"];
-	NSString *strDate = [dateFormatter stringFromDate:self.datepicker.date];
-
-	UIButton *btn = [self.view viewWithTag:activeBtnTag];
-	[btn setTitle:strDate forState:UIControlStateNormal];
-
-	[self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)eventBtnAction:(id)sender {
+	UIButton *btn = (UIButton *)sender;
+	[btn setSelected:![btn isSelected]];
 }
+
+#pragma mark - Popup protocol delegate
 
 - (void) cancelDate:(id) sender {
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)eventBtnAction:(id)sender {
-	UIButton *btn = (UIButton *)sender;
-	[btn setSelected:![btn isSelected]];
+- (void) selectDate:(id) sender {
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"hh : mm"];
+	self.curentDate = self.popupVC.getDate;
+	NSString *strDate = [dateFormatter stringFromDate:self.curentDate];
+	NSLog(@"%@", strDate);
+
+	UIButton *btn = [self.view viewWithTag:activeBtnTag];
+	[btn setDate:self.curentDate];
+	[btn setTitle:strDate forState:UIControlStateNormal];
+
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	NSDateComponents *dateComponents = [gregorian components:(NSHourCalendarUnit  | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:self.curentDate];
+	NSInteger hour = [dateComponents hour];
+	NSLog(@"%ld", (long)hour);
+
+	if ([btn tag] == 31) {
+		if (hour >= 12) {
+			[self.sinceAMLbl setText:@"PM"];
+		} else {
+			[self.sinceAMLbl setText:@"AM"];
+		}
+	}
+	if ([btn tag] == 32){
+		if (hour >= 12) {
+			[self.upToAMLbl setText:@"PM"];
+		} else {
+			[self.upToAMLbl setText:@"AM"];
+		}
+	}
+
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 # pragma mark - Popover Presentation Controller Delegate

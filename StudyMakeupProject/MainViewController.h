@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface MainViewController : UIViewController {
+#import "ViewController.h"
+
+@interface MainViewController : UIViewController <popupDelegate> {
 	UIImagePickerController *ipc;
 }
 
@@ -23,16 +25,18 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *sinceTextLbl;
 @property (weak, nonatomic) IBOutlet UILabel *upToTextLbl;
+@property (weak, nonatomic) IBOutlet UILabel *sinceAMLbl;
+@property (weak, nonatomic) IBOutlet UILabel *upToAMLbl;
 
 @property (weak, nonatomic) IBOutlet UIButton *sinceDate;
 @property (weak, nonatomic) IBOutlet UIButton *upToDate;
 
 @property (weak, nonatomic) IBOutlet UIButton *backBtnL;
 
+@property (strong, nonatomic) ViewController *popupVC;
+
 - (IBAction)dayPicker:(id)sender;
 - (IBAction)setTime:(id)sender;
 - (IBAction)activeSwitch:(id)sender;
-
-@property UIDatePicker *datepicker;
 
 @end

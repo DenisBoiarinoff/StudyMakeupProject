@@ -11,9 +11,11 @@
             <connections>
                 <outlet property="infoLabel" destination="pEJ-Xv-zbk" id="1Og-7u-tqg"/>
                 <outlet property="navigationBar" destination="jV5-vu-3Oy" id="nNw-3Z-S4U"/>
+                <outlet property="sinceAMLbl" destination="S5l-Wz-b1b" id="aXx-QL-pDK"/>
                 <outlet property="sinceDate" destination="vam-Tf-02o" id="W2M-Dx-81B"/>
                 <outlet property="sinceTextLbl" destination="WRQ-Dc-utX" id="4UK-cJ-FPs"/>
                 <outlet property="switchView" destination="gfd-g6-P8M" id="AQ5-W0-wPX"/>
+                <outlet property="upToAMLbl" destination="iOz-OL-n5A" id="9vv-iE-y7q"/>
                 <outlet property="upToDate" destination="yC5-BJ-o8E" id="ZhA-Ci-yA2"/>
                 <outlet property="upToTextLbl" destination="Fwc-qg-3mo" id="PRg-aC-ONl"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Yl3-cm-Nkn"/>

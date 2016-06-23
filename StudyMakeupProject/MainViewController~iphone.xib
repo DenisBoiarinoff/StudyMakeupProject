@@ -13,8 +13,10 @@
                 <outlet property="infoLabel" destination="VWX-Cu-8ZP" id="cZr-ia-Ofe"/>
                 <outlet property="mapView" destination="TgS-cc-VGu" id="i7d-HX-VAA"/>
                 <outlet property="navigationBar" destination="qvE-vW-5ig" id="cTE-Kc-gXH"/>
+                <outlet property="sinceAMLbl" destination="4fi-eo-PiE" id="eOo-Af-49c"/>
                 <outlet property="sinceDate" destination="BLK-b2-oUb" id="SzZ-kx-AaQ"/>
                 <outlet property="sinceTextLbl" destination="sYz-GX-Nqa" id="AXg-xt-FDw"/>
+                <outlet property="upToAMLbl" destination="xUG-ma-gep" id="aC2-j6-Q7C"/>
                 <outlet property="upToDate" destination="HYX-L5-t5c" id="ZYx-uG-Cd0"/>
                 <outlet property="upToTextLbl" destination="Mq5-WG-j84" id="rar-Tk-lS3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -31,7 +33,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yjb-0J-dxA">
-                    <rect key="frame" x="0.0" y="250" width="600" height="126"/>
+                    <rect key="frame" x="0.0" y="248" width="600" height="126"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vqu-XZ-wiA">
                             <rect key="frame" x="30" y="17" width="540" height="42"/>
@@ -248,7 +250,7 @@
                     </constraints>
                 </view>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-cc-VGu">
-                    <rect key="frame" x="0.0" y="376" width="600" height="224"/>
+                    <rect key="frame" x="0.0" y="374" width="600" height="226"/>
                 </mapView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YBJ-D1-uEw">
                     <rect key="frame" x="0.0" y="84" width="600" height="72"/>
@@ -288,7 +290,7 @@
                     </variation>
                 </view>
                 <view tag="30" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lbo-tY-Ch0">
-                    <rect key="frame" x="0.0" y="158" width="600" height="90"/>
+                    <rect key="frame" x="0.0" y="157" width="600" height="90"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SINCE DATE:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sYz-GX-Nqa">
                             <rect key="frame" x="71" y="0.0" width="192" height="45"/>
@@ -444,7 +446,7 @@
                 <constraint firstItem="IGj-Za-3R1" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.29:1" id="7RW-vH-EoK"/>
                 <constraint firstAttribute="trailing" secondItem="qvE-vW-5ig" secondAttribute="trailing" id="7ZX-WW-Xoj"/>
                 <constraint firstItem="4fi-eo-PiE" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.05" id="DLb-AG-zfH"/>
-                <constraint firstItem="yjb-0J-dxA" firstAttribute="top" secondItem="Lbo-tY-Ch0" secondAttribute="bottom" constant="2" id="GZo-d4-7aj"/>
+                <constraint firstItem="yjb-0J-dxA" firstAttribute="top" secondItem="Lbo-tY-Ch0" secondAttribute="bottom" constant="1" id="GZo-d4-7aj"/>
                 <constraint firstAttribute="trailing" secondItem="TgS-cc-VGu" secondAttribute="trailing" id="Ga1-Ps-Ze3"/>
                 <constraint firstItem="0yG-M9-lTZ" firstAttribute="trailing" secondItem="l4V-Y0-rwa" secondAttribute="trailing" id="HdT-n1-Uno"/>
                 <constraint firstItem="gJE-WO-gZv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="J5h-KR-YID"/>
@@ -456,7 +458,7 @@
                 <constraint firstItem="xUG-ma-gep" firstAttribute="trailing" secondItem="l4V-Y0-rwa" secondAttribute="trailing" id="Q2n-bx-Ebq"/>
                 <constraint firstItem="Vqu-XZ-wiA" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.07:1" id="R9e-KQ-kNC"/>
                 <constraint firstItem="IGj-Za-3R1" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.05:1" id="S8Y-eC-GBj"/>
-                <constraint firstItem="Lbo-tY-Ch0" firstAttribute="top" secondItem="YBJ-D1-uEw" secondAttribute="bottom" constant="2" id="SMs-VT-P1w"/>
+                <constraint firstItem="Lbo-tY-Ch0" firstAttribute="top" secondItem="YBJ-D1-uEw" secondAttribute="bottom" constant="1" id="SMs-VT-P1w"/>
                 <constraint firstItem="eyW-uI-H6I" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.04:1" id="SRR-QQ-ily"/>
                 <constraint firstItem="YBJ-D1-uEw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Sqb-sa-FYW"/>
                 <constraint firstItem="Lbo-tY-Ch0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SxZ-qX-775"/>
