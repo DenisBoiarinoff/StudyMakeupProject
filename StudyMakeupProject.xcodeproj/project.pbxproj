@@ -12,6 +12,9 @@
 		590AEB011D125412005EC2B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 590AEB001D125412005EC2B1 /* Assets.xcassets */; };
 		590AEB041D125412005EC2B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 590AEB021D125412005EC2B1 /* LaunchScreen.storyboard */; };
 		590AEB0F1D125412005EC2B1 /* StudyMakeupProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 590AEB0E1D125412005EC2B1 /* StudyMakeupProjectTests.m */; };
+		5931C8361D1BAE8700004644 /* UIButton+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 5931C8351D1BAE8700004644 /* UIButton+Date.m */; };
+		59A7EB701D1AAF7C000C3F6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7EB6E1D1AAF7B000C3F6F /* ViewController.m */; };
+		59A7EB711D1AAF7C000C3F6F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A7EB6F1D1AAF7B000C3F6F /* ViewController.xib */; };
 		59B493AE1D12A91000FE63EB /* MainViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59B493AD1D12A91000FE63EB /* MainViewController~ipad.xib */; };
 		59C707911D12551700494961 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C7078F1D12551700494961 /* MainViewController.m */; };
 		59C707921D12551700494961 /* MainViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59C707901D12551700494961 /* MainViewController~iphone.xib */; };
@@ -39,6 +42,11 @@
 		590AEB0A1D125412005EC2B1 /* StudyMakeupProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudyMakeupProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		590AEB0E1D125412005EC2B1 /* StudyMakeupProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudyMakeupProjectTests.m; sourceTree = "<group>"; };
 		590AEB101D125412005EC2B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5931C8341D1BAE8700004644 /* UIButton+Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Date.h"; sourceTree = "<group>"; };
+		5931C8351D1BAE8700004644 /* UIButton+Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Date.m"; sourceTree = "<group>"; };
+		59A7EB6D1D1AAF7A000C3F6F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		59A7EB6E1D1AAF7B000C3F6F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		59A7EB6F1D1AAF7B000C3F6F /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		59B493AD1D12A91000FE63EB /* MainViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewController~ipad.xib"; sourceTree = "<group>"; };
 		59C7078E1D12551700494961 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		59C7078F1D12551700494961 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -97,6 +105,11 @@
 				59C7078F1D12551700494961 /* MainViewController.m */,
 				59C707901D12551700494961 /* MainViewController~iphone.xib */,
 				59B493AD1D12A91000FE63EB /* MainViewController~ipad.xib */,
+				59A7EB6D1D1AAF7A000C3F6F /* ViewController.h */,
+				59A7EB6E1D1AAF7B000C3F6F /* ViewController.m */,
+				59A7EB6F1D1AAF7B000C3F6F /* ViewController.xib */,
+				5931C8341D1BAE8700004644 /* UIButton+Date.h */,
+				5931C8351D1BAE8700004644 /* UIButton+Date.m */,
 			);
 			path = StudyMakeupProject;
 			sourceTree = "<group>";
@@ -200,6 +213,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59A7EB711D1AAF7C000C3F6F /* ViewController.xib in Resources */,
 				59B493AE1D12A91000FE63EB /* MainViewController~ipad.xib in Resources */,
 				590AEB041D125412005EC2B1 /* LaunchScreen.storyboard in Resources */,
 				590AEB011D125412005EC2B1 /* Assets.xcassets in Resources */,
@@ -223,6 +237,8 @@
 			files = (
 				590AEAF91D125412005EC2B1 /* AppDelegate.m in Sources */,
 				590AEAF61D125412005EC2B1 /* main.m in Sources */,
+				5931C8361D1BAE8700004644 /* UIButton+Date.m in Sources */,
+				59A7EB701D1AAF7C000C3F6F /* ViewController.m in Sources */,
 				59C707911D12551700494961 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
