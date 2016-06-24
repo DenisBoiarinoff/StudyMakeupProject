@@ -132,6 +132,10 @@ int activeBtnTag;
 	[btn setSelected:![btn isSelected]];
 }
 
+- (IBAction)backAction:(id)sender {
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark - Popup protocol delegate
 
 - (void) cancelDate:(id) sender {

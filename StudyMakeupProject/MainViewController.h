@@ -39,4 +39,7 @@
 - (IBAction)setTime:(id)sender;
 - (IBAction)activeSwitch:(id)sender;
 
+- (IBAction)backAction:(id)sender;
+
+
 @end

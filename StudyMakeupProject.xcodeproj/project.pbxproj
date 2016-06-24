@@ -12,7 +12,16 @@
 		590AEB011D125412005EC2B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 590AEB001D125412005EC2B1 /* Assets.xcassets */; };
 		590AEB041D125412005EC2B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 590AEB021D125412005EC2B1 /* LaunchScreen.storyboard */; };
 		590AEB0F1D125412005EC2B1 /* StudyMakeupProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 590AEB0E1D125412005EC2B1 /* StudyMakeupProjectTests.m */; };
+		590D4E061D1CECE40034D73C /* WayPoint+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 590D4E031D1CECE40034D73C /* WayPoint+CoreDataProperties.m */; };
+		590D4E071D1CECE40034D73C /* WayPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 590D4E051D1CECE40034D73C /* WayPoint.m */; };
 		5931C8361D1BAE8700004644 /* UIButton+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 5931C8351D1BAE8700004644 /* UIButton+Date.m */; };
+		5931C8381D1BD04C00004644 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5931C8371D1BD04C00004644 /* CoreData.framework */; };
+		5931C83B1D1BD13000004644 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5931C8391D1BD13000004644 /* Model.xcdatamodeld */; };
+		5979E78C1D1BF0E00028E8BD /* MainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979E78A1D1BF0E00028E8BD /* MainScreenViewController.m */; };
+		5979E78D1D1BF0E00028E8BD /* MainScreenViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5979E78B1D1BF0E00028E8BD /* MainScreenViewController~ipad.xib */; };
+		5979E78F1D1BF1170028E8BD /* MainScreenViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5979E78E1D1BF1170028E8BD /* MainScreenViewController~iphone.xib */; };
+		599B6CD51D1C1311005189A3 /* PointTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 599B6CD31D1C1311005189A3 /* PointTableViewCell.m */; };
+		599B6CD61D1C1311005189A3 /* PointTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599B6CD41D1C1311005189A3 /* PointTableViewCell.xib */; };
 		59A7EB701D1AAF7C000C3F6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7EB6E1D1AAF7B000C3F6F /* ViewController.m */; };
 		59A7EB711D1AAF7C000C3F6F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A7EB6F1D1AAF7B000C3F6F /* ViewController.xib */; };
 		59B493AE1D12A91000FE63EB /* MainViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59B493AD1D12A91000FE63EB /* MainViewController~ipad.xib */; };
@@ -42,8 +51,21 @@
 		590AEB0A1D125412005EC2B1 /* StudyMakeupProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudyMakeupProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		590AEB0E1D125412005EC2B1 /* StudyMakeupProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StudyMakeupProjectTests.m; sourceTree = "<group>"; };
 		590AEB101D125412005EC2B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		590D4E021D1CECE40034D73C /* WayPoint+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "WayPoint+CoreDataProperties.h"; path = "../WayPoint+CoreDataProperties.h"; sourceTree = "<group>"; };
+		590D4E031D1CECE40034D73C /* WayPoint+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WayPoint+CoreDataProperties.m"; path = "../WayPoint+CoreDataProperties.m"; sourceTree = "<group>"; };
+		590D4E041D1CECE40034D73C /* WayPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WayPoint.h; path = ../WayPoint.h; sourceTree = "<group>"; };
+		590D4E051D1CECE40034D73C /* WayPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WayPoint.m; path = ../WayPoint.m; sourceTree = "<group>"; };
 		5931C8341D1BAE8700004644 /* UIButton+Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Date.h"; sourceTree = "<group>"; };
 		5931C8351D1BAE8700004644 /* UIButton+Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Date.m"; sourceTree = "<group>"; };
+		5931C8371D1BD04C00004644 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5931C83A1D1BD13000004644 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		5979E7891D1BF0E00028E8BD /* MainScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScreenViewController.h; sourceTree = "<group>"; };
+		5979E78A1D1BF0E00028E8BD /* MainScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScreenViewController.m; sourceTree = "<group>"; };
+		5979E78B1D1BF0E00028E8BD /* MainScreenViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainScreenViewController~ipad.xib"; sourceTree = "<group>"; };
+		5979E78E1D1BF1170028E8BD /* MainScreenViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainScreenViewController~iphone.xib"; sourceTree = "<group>"; };
+		599B6CD21D1C1311005189A3 /* PointTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointTableViewCell.h; sourceTree = "<group>"; };
+		599B6CD31D1C1311005189A3 /* PointTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointTableViewCell.m; sourceTree = "<group>"; };
+		599B6CD41D1C1311005189A3 /* PointTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PointTableViewCell.xib; sourceTree = "<group>"; };
 		59A7EB6D1D1AAF7A000C3F6F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		59A7EB6E1D1AAF7B000C3F6F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		59A7EB6F1D1AAF7B000C3F6F /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
@@ -59,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5931C8381D1BD04C00004644 /* CoreData.framework in Frameworks */,
 				59C707941D12693200494961 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +99,7 @@
 		590AEAE81D12540F005EC2B1 = {
 			isa = PBXGroup;
 			children = (
+				5931C8371D1BD04C00004644 /* CoreData.framework */,
 				59C707931D12693200494961 /* MapKit.framework */,
 				590AEAF31D125411005EC2B1 /* StudyMakeupProject */,
 				590AEB0D1D125412005EC2B1 /* StudyMakeupProjectTests */,
@@ -95,6 +119,7 @@
 		590AEAF31D125411005EC2B1 /* StudyMakeupProject */ = {
 			isa = PBXGroup;
 			children = (
+				590D4E081D1CECF90034D73C /* coreData */,
 				590AEAF71D125412005EC2B1 /* AppDelegate.h */,
 				590AEAF81D125412005EC2B1 /* AppDelegate.m */,
 				590AEB001D125412005EC2B1 /* Assets.xcassets */,
@@ -110,6 +135,13 @@
 				59A7EB6F1D1AAF7B000C3F6F /* ViewController.xib */,
 				5931C8341D1BAE8700004644 /* UIButton+Date.h */,
 				5931C8351D1BAE8700004644 /* UIButton+Date.m */,
+				5979E7891D1BF0E00028E8BD /* MainScreenViewController.h */,
+				5979E78A1D1BF0E00028E8BD /* MainScreenViewController.m */,
+				5979E78B1D1BF0E00028E8BD /* MainScreenViewController~ipad.xib */,
+				5979E78E1D1BF1170028E8BD /* MainScreenViewController~iphone.xib */,
+				599B6CD21D1C1311005189A3 /* PointTableViewCell.h */,
+				599B6CD31D1C1311005189A3 /* PointTableViewCell.m */,
+				599B6CD41D1C1311005189A3 /* PointTableViewCell.xib */,
 			);
 			path = StudyMakeupProject;
 			sourceTree = "<group>";
@@ -129,6 +161,18 @@
 				590AEB101D125412005EC2B1 /* Info.plist */,
 			);
 			path = StudyMakeupProjectTests;
+			sourceTree = "<group>";
+		};
+		590D4E081D1CECF90034D73C /* coreData */ = {
+			isa = PBXGroup;
+			children = (
+				590D4E021D1CECE40034D73C /* WayPoint+CoreDataProperties.h */,
+				590D4E031D1CECE40034D73C /* WayPoint+CoreDataProperties.m */,
+				590D4E041D1CECE40034D73C /* WayPoint.h */,
+				590D4E051D1CECE40034D73C /* WayPoint.m */,
+				5931C8391D1BD13000004644 /* Model.xcdatamodeld */,
+			);
+			name = coreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,9 +258,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				59A7EB711D1AAF7C000C3F6F /* ViewController.xib in Resources */,
+				5979E78D1D1BF0E00028E8BD /* MainScreenViewController~ipad.xib in Resources */,
 				59B493AE1D12A91000FE63EB /* MainViewController~ipad.xib in Resources */,
 				590AEB041D125412005EC2B1 /* LaunchScreen.storyboard in Resources */,
+				599B6CD61D1C1311005189A3 /* PointTableViewCell.xib in Resources */,
 				590AEB011D125412005EC2B1 /* Assets.xcassets in Resources */,
+				5979E78F1D1BF1170028E8BD /* MainScreenViewController~iphone.xib in Resources */,
 				59C707921D12551700494961 /* MainViewController~iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,10 +283,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				590AEAF91D125412005EC2B1 /* AppDelegate.m in Sources */,
+				5979E78C1D1BF0E00028E8BD /* MainScreenViewController.m in Sources */,
+				590D4E061D1CECE40034D73C /* WayPoint+CoreDataProperties.m in Sources */,
 				590AEAF61D125412005EC2B1 /* main.m in Sources */,
 				5931C8361D1BAE8700004644 /* UIButton+Date.m in Sources */,
+				599B6CD51D1C1311005189A3 /* PointTableViewCell.m in Sources */,
+				590D4E071D1CECE40034D73C /* WayPoint.m in Sources */,
 				59A7EB701D1AAF7C000C3F6F /* ViewController.m in Sources */,
 				59C707911D12551700494961 /* MainViewController.m in Sources */,
+				5931C83B1D1BD13000004644 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +490,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5931C8391D1BD13000004644 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5931C83A1D1BD13000004644 /* Model.xcdatamodel */,
+			);
+			currentVersion = 5931C83A1D1BD13000004644 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 590AEAE91D12540F005EC2B1 /* Project object */;
 }

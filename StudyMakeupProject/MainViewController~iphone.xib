@@ -421,6 +421,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mD8-SW-BrS">
                             <rect key="frame" x="33" y="9" width="132" height="36"/>
                             <state key="normal" backgroundImage="backPhone"/>
+                            <connections>
+                                <action selector="backAction:" destination="-1" eventType="touchUpInside" id="QAA-y0-gnU"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.59607843137254901" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
