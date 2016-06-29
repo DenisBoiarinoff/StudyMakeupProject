@@ -66,8 +66,6 @@ int activeBtnTag;
 
 		self.popupVC.modalPresentationStyle = UIModalPresentationPopover;
 	}
-
-//	int parentWidth = [[UIScreen mainScreen] bounds].size.width;
 	int parentHeight = [[UIScreen mainScreen] bounds].size.height;
 
 	NSString *deviceType = [UIDevice currentDevice].model;
@@ -148,9 +146,6 @@ int activeBtnTag;
 
 	UIButton *source = (UIButton *)sender;
 
-	NSLog(@"UIButton %@", [source.titleLabel text]);
-	NSLog(@"UIButton date %@", [source date]);
-
 	activeBtnTag = (int)[source tag];
 
 	[self.popupVC chooseDate:source.date];
@@ -179,11 +174,8 @@ int activeBtnTag;
 
 - (IBAction)backAction:(id)sender {
 
-	if (wayPointId) {
-		[self backAndSaveRecord];
-	} else {
-		[self backAndCreateRecord];
-	}
+	[self backAndSaveRecord];
+
 }
 
 #pragma mark - Popup protocol delegate
@@ -201,11 +193,9 @@ int activeBtnTag;
 
 	UIButton *btn = [self.view viewWithTag:activeBtnTag];
 	[btn setDate:self.curentDate];
-	if (activeBtnTag == 31) {
-		[wayPoint setValue:self.sinceDate.date forKey:@"sinceDate"];
-	} else {
-		[wayPoint setValue:self.upToDate.date forKey:@"upToDate"];
-	}
+
+	[self saveRecord];
+
 	[btn setTitle:strDate forState:UIControlStateNormal];
 
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -262,7 +252,6 @@ int activeBtnTag;
 
 - (void) prepareViewForEdit {
 	NSError *fetchError = nil;
-	//	self.wayPoint = [self.managedContext existingObjectWithID:wayPointId error:&fetchError];
 	[self setWayPoint:[self.managedContext existingObjectWithID:wayPointId error:&fetchError]];
 
 	[self.infoLablEdit setText:[self.wayPoint valueForKey:@"title"]];
@@ -319,32 +308,35 @@ int activeBtnTag;
 
 - (void) prepareViewForCreating {
 
-	[self.infoLablEdit setText:@""];
+	NSManagedObject *newWayPoint = [NSEntityDescription insertNewObjectForEntityForName:@"WayPoint" inManagedObjectContext:self.managedContext];
+	[newWayPoint setValue:[NSDate date] forKey:@"sinceDate"];
+	[newWayPoint setValue:[NSDate date] forKey:@"upToDate"];
+	[newWayPoint setValue:@"" forKey:@"title"];
 
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setDateFormat:@"hh : mm"];
+	NSMutableArray *weekArray = [[NSMutableArray alloc] init];
+	for (int i = 1; i < 8; i++) {
+		[weekArray addObject:[NSNumber numberWithBool:false]];
+	}
+	[newWayPoint setValue:weekArray forKey:@"weeksDays"];
 
-	[self.sinceDate setTitle:@"00 : 00" forState:UIControlStateNormal];
-	[self.sinceDate setDate:[NSDate date]];
+	NSMutableArray *features = [[NSMutableArray alloc] init];
+	for (int i = 1; i < 4; i++) {
+		[features addObject:[NSNumber numberWithBool:false]];
+	}
+	[newWayPoint setValue:features forKey:@"features"];
 
-	[self.upToDate setTitle:@"00 : 00" forState:UIControlStateNormal];
-	[self.upToDate setDate:[NSDate date]];
-
-	for (int i = 51; i < 58; i++) {
-		UIButton *dayBtn = [self.view viewWithTag:i];
-		[dayBtn setSelected:false];
+	NSError *error = nil;
+	// Save the object to persistent store
+	if (![self.managedContext save:&error]) {
+		NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
 	}
 
-	[self.sinceAMLbl setText:@"AM"];
-	[self.upToAMLbl setText:@"AM"];
+	[self replaceWayPointID:[newWayPoint objectID]];
 
-	for (int i = 71; i < 73; i++) {
-		UIButton *dayBtn = [self.view viewWithTag:i];
-		[dayBtn setSelected:false];
-	}
+	[self prepareViewForEdit];
 }
 
-- (void) backAndSaveRecord {
+- (void) saveRecord {
 
 	if (self.managedContext) {
 		[wayPoint setValue:self.sinceDate.date forKey:@"sinceDate"];
@@ -376,41 +368,13 @@ int activeBtnTag;
 		NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
 	}
 
-	[self.navigationController popViewControllerAnimated:YES];
-
 }
 
-- (void) backAndCreateRecord {
+- (void) backAndSaveRecord {
 
-	NSManagedObject *newWayPoint = [NSEntityDescription insertNewObjectForEntityForName:@"WayPoint" inManagedObjectContext:self.managedContext];
-	[newWayPoint setValue:self.sinceDate.date forKey:@"sinceDate"];
-	[newWayPoint setValue:self.upToDate.date forKey:@"upToDate"];
-	[newWayPoint setValue:self.infoLablEdit.text forKey:@"title"];
-
-	NSMutableArray *weekArray = [[NSMutableArray alloc] init];
-
-	for (int i = 51; i < 58; i++) {
-		UIButton *btn = [self.view viewWithTag:i];
-		[weekArray addObject:[NSNumber numberWithBool:[btn isSelected]]];
-	}
-	[newWayPoint setValue:weekArray forKey:@"weeksDays"];
-
-	NSMutableArray *features = [[NSMutableArray alloc] init];
-
-	for (int i = 71; i < 74; i++) {
-		UIButton *btn = [self.view viewWithTag:i];
-		[features addObject:[NSNumber numberWithBool:[btn isSelected]]];
-	}
-	[newWayPoint setValue:features forKey:@"features"];
-
-	NSError *error = nil;
-	// Save the object to persistent store
-	if (![self.managedContext save:&error]) {
-		NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-	}
+	[self saveRecord];
 
 	[self.navigationController popViewControllerAnimated:YES];
-
 
 }
 

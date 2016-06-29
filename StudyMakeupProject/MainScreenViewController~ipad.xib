@@ -39,46 +39,17 @@
                                         <action selector="addWayPoint:" destination="-1" eventType="touchUpInside" id="iUO-ns-BEm"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMr-AA-Nos">
-                                    <rect key="frame" x="284" y="12" width="32" height="30"/>
-                                    <state key="normal" title="ADD">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="addAction:" destination="-1" eventType="touchUpInside" id="hcy-7d-92A"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zQ-7A-M2t">
-                                    <rect key="frame" x="316" y="12" width="30" height="30"/>
-                                    <state key="normal" title="DEL">
-                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="dellAction:" destination="-1" eventType="touchUpInside" id="alb-RI-POE"/>
-                                    </connections>
-                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.63137254899999995" green="0.0" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstItem="0zQ-7A-M2t" firstAttribute="top" secondItem="xia-hu-3kE" secondAttribute="top" constant="12" id="3XT-Ij-C3O"/>
                                 <constraint firstItem="06G-K5-cVg" firstAttribute="leading" secondItem="xia-hu-3kE" secondAttribute="centerX" multiplier="0.1" id="DlK-D0-dpZ"/>
                                 <constraint firstItem="63P-B1-R5H" firstAttribute="trailing" secondItem="xia-hu-3kE" secondAttribute="centerX" multiplier="1.9" id="H4x-cD-4nW"/>
-                                <constraint firstItem="0zQ-7A-M2t" firstAttribute="leading" secondItem="UMr-AA-Nos" secondAttribute="trailing" id="R1z-2N-LTs"/>
-                                <constraint firstAttribute="bottom" secondItem="0zQ-7A-M2t" secondAttribute="bottom" constant="12" id="WDL-lk-Uxr"/>
                                 <constraint firstItem="63P-B1-R5H" firstAttribute="height" secondItem="06G-K5-cVg" secondAttribute="height" id="YfP-7C-2vH"/>
-                                <constraint firstItem="UMr-AA-Nos" firstAttribute="centerY" secondItem="xia-hu-3kE" secondAttribute="centerY" id="Zb1-Oe-5qo"/>
                                 <constraint firstItem="06G-K5-cVg" firstAttribute="centerY" secondItem="xia-hu-3kE" secondAttribute="centerY" id="bAQ-LJ-1jk"/>
                                 <constraint firstItem="63P-B1-R5H" firstAttribute="centerY" secondItem="xia-hu-3kE" secondAttribute="centerY" id="d1t-2a-MA9"/>
                                 <constraint firstItem="06G-K5-cVg" firstAttribute="width" secondItem="xia-hu-3kE" secondAttribute="width" multiplier="0.17" id="e4R-YV-rBy"/>
                                 <constraint firstItem="63P-B1-R5H" firstAttribute="width" secondItem="06G-K5-cVg" secondAttribute="width" id="kUy-PD-SSp"/>
-                                <constraint firstItem="UMr-AA-Nos" firstAttribute="centerX" secondItem="xia-hu-3kE" secondAttribute="centerX" id="rC0-dX-YkR"/>
                             </constraints>
-                            <variation key="default">
-                                <mask key="subviews">
-                                    <exclude reference="UMr-AA-Nos"/>
-                                    <exclude reference="0zQ-7A-M2t"/>
-                                </mask>
-                            </variation>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

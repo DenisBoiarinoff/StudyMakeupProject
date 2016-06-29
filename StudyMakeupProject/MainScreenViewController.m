@@ -130,22 +130,6 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 		pointCell = [[PointTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:pointCellIdentifier];
 	}
 
-	NSLog(@"constraint %f", pointCell.titleWidth.constant );
-	NSLog(@"constraint %f", pointCell.titleWidth.multiplier );
-
-//	pointCell.titleWidth.constant = -1 * 0.3 * [[UIScreen mainScreen] bounds].size.width;
-//	pointCell.titleWidth.constant = - 1 * 0.1 * [[UIScreen mainScreen] bounds].size.width;
-//	pointCell.titleWidth.constant = -1 * 0.1 * [[UIScreen mainScreen] bounds].size.width;
-//	pointCell.titleWidth.constant = -1 * 1 * pointCell.titleLabel.frame.size.width;
-//	pointCell.titleWidth.constant = -1 * 2 * [[UIScreen mainScreen] bounds].size.width;
-//	pointCell.titleWidth.constant = +1 * 0.1 * [[UIScreen mainScreen] bounds].size.width;
-//	pointCell.titleWidth.constant = - pointCell.titleWidth.constant;
-	NSLog(@"constraint %f", pointCell.titleWidth.constant );
-
-
-
-
-
 	[pointCell.toEditBtn setTag:indexPath.row];
 
 	[pointCell.toEditBtn addTarget:self
@@ -176,7 +160,6 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 			[dayLbl setTextColor:[UIColor blackColor]];
 		} else {
 			[dayLbl setTextColor:[UIColor grayColor]];
-//			[dayLbl setTextColor:[UIColor colorWithRed:83 green:83 blue:83 alpha:1.]];
 		}
 	}
 
@@ -198,7 +181,6 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 	}
 
 	NSArray *features = [pnt valueForKey:@"features"];
-//	NSLog(@"%@", features);
 	for (int i = 101; i < 104; i++) {
 		UIImageView *imgView = [pointCell.titleView viewWithTag:i];
 		[imgView setHidden:NO];
@@ -208,8 +190,6 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 	for (int i = 0; i < 3; i++) {
 		UIImageView *imgView = [pointCell viewWithTag:tag];
 		BOOL b = [[features objectAtIndex:i] boolValue];
-//		NSLog(@"tag - %d, i - %d", tag, i);
-//		NSLog(@"b - %s",b ? "true" : "false");
 		if (!b) {
 			[imgView setHidden:YES];
 			tag++;
@@ -242,7 +222,7 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 														relatedBy:NSLayoutRelationEqual
 														   toItem:pointCell.titleView
 														attribute:NSLayoutAttributeWidth
-													   multiplier:multiplier
+													   multiplier:multiplier - 0.03
 														 constant:0];
 
 	NSLog(@"constraint %f", pointCell.titleWidth.constant );
@@ -289,100 +269,6 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 */
 
 # pragma mark - Button Actions
-
-- (IBAction)addAction:(id)sender {
-	WayPoint *newPoint1 = [NSEntityDescription insertNewObjectForEntityForName:@"WayPoint" inManagedObjectContext:self.context];
-
-	// If appropriate, configure the new managed object.
-	// Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-	newPoint1.sinceDate = [NSDate date];
-	newPoint1.upToDate = [NSDate date];
-	newPoint1.title = @"On a bus stop just in time";
-
-	NSArray *activeDay1 = [[NSArray alloc] initWithObjects:[NSNumber numberWithBool:YES],
-						 [NSNumber numberWithBool:NO],
-						 [NSNumber numberWithBool:YES],
-						 [NSNumber numberWithBool:NO],
-						 [NSNumber numberWithBool:NO],
-						 [NSNumber numberWithBool:YES],
-						 [NSNumber numberWithBool:YES],
-						 nil];
-	newPoint1.weeksDays = [NSArray arrayWithArray:activeDay1];
-
-
-	NSMutableArray *numbersArray = [NSMutableArray array];
-	for (int i = 0; i < 2; i++) {
-		[numbersArray addObject:[NSNumber numberWithInteger:arc4random_uniform(100)]];
-	}
-	newPoint1.myWayPoint = [NSArray arrayWithArray:numbersArray];
-
-	NSArray *activeFeatures1 = [[NSArray alloc] initWithObjects:[NSNumber numberWithBool:YES],
-							   [NSNumber numberWithBool:NO],
-							   [NSNumber numberWithBool:NO],
-							   nil];
-	newPoint1.features = [NSArray arrayWithArray:activeFeatures1];
-
-	WayPoint *newPoint2 = [NSEntityDescription insertNewObjectForEntityForName:@"WayPoint" inManagedObjectContext:self.context];
-
-	// If appropriate, configure the new managed object.
-	// Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-	newPoint2.sinceDate = [NSDate date];
-	newPoint2.upToDate = [NSDate date];
-	newPoint2.title = @"Drink cofe with friends";
-
-	NSArray *activeDay2 = [[NSArray alloc] initWithObjects:[NSNumber numberWithBool:YES],
-						  [NSNumber numberWithBool:NO],
-						  [NSNumber numberWithBool:YES],
-						  [NSNumber numberWithBool:YES],
-						  [NSNumber numberWithBool:NO],
-						  [NSNumber numberWithBool:YES],
-						  [NSNumber numberWithBool:YES],
-						  nil];
-	newPoint2.weeksDays = [NSArray arrayWithArray:activeDay2];
-
-	newPoint2.myWayPoint = [NSArray arrayWithArray:numbersArray];
-
-	NSArray *activeFeatures2 = [[NSArray alloc] initWithObjects:[NSNumber numberWithBool:NO],
-							   [NSNumber numberWithBool:YES],
-							   [NSNumber numberWithBool:NO],
-							   nil];
-	newPoint2.features = [NSArray arrayWithArray:activeFeatures2];
-
-	// Save the context.
-	NSError *error = nil;
-	if (![self.context save:&error]) {
-		// Replace this implementation with code to handle the error appropriately.
-		// abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		abort();
-	}
-	
-	[self.tableView reloadData];
-}
-
-- (IBAction)dellAction:(id)sender {
-
-	NSFetchRequest *allEntryes = [[NSFetchRequest alloc] init];
-	[allEntryes setEntity:[NSEntityDescription entityForName:@"WayPoint" inManagedObjectContext:self.context]];
-	[allEntryes setIncludesPropertyValues:NO]; //only fetch the managedObjectID
-
-	NSError *error = nil;
-	NSArray *entryes = [self.context executeFetchRequest:allEntryes error:&error];
-	if (error) {
-		NSLog(@"request rerror %@",error);
-	}
-	//error handling goes here
-	for (NSManagedObject *entry in entryes) {
-		[self.context deleteObject:entry];
-	}
-	NSError *saveError = nil;
-	[self.context save:&saveError];
-	if (saveError) {
-		NSLog(@"save rerror %@",saveError);
-	}
-	//more error handling here
-	[self.tableView reloadData];
-}
 
 - (IBAction)addWayPoint:(id)sender {
 

@@ -29,11 +29,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJE-WO-gZv">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="24"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yjb-0J-dxA">
-                    <rect key="frame" x="0.0" y="248" width="600" height="126"/>
+                    <rect key="frame" x="0.0" y="242" width="600" height="126"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vqu-XZ-wiA">
                             <rect key="frame" x="30" y="17" width="540" height="42"/>
@@ -250,10 +250,10 @@
                     </constraints>
                 </view>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-cc-VGu">
-                    <rect key="frame" x="0.0" y="374" width="600" height="226"/>
+                    <rect key="frame" x="0.0" y="368" width="600" height="232"/>
                 </mapView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YBJ-D1-uEw">
-                    <rect key="frame" x="0.0" y="84" width="600" height="72"/>
+                    <rect key="frame" x="0.0" y="78" width="600" height="72"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yG-M9-lTZ">
                             <rect key="frame" x="504" y="3" width="66" height="66"/>
@@ -279,7 +279,7 @@
                     </constraints>
                 </view>
                 <view tag="30" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lbo-tY-Ch0">
-                    <rect key="frame" x="0.0" y="157" width="600" height="90"/>
+                    <rect key="frame" x="0.0" y="151" width="600" height="90"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SINCE DATE:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sYz-GX-Nqa">
                             <rect key="frame" x="71" y="0.0" width="192" height="45"/>
@@ -362,7 +362,7 @@
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvE-vW-5ig">
-                    <rect key="frame" x="0.0" y="30" width="600" height="54"/>
+                    <rect key="frame" x="0.0" y="24" width="600" height="54"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lor-cV-xyS">
                             <rect key="frame" x="258" y="9" width="312" height="36"/>
@@ -425,7 +425,7 @@
             </subviews>
             <color key="backgroundColor" red="0.69803921568627447" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="gJE-WO-gZv" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.05:1" id="0Pu-Zr-uTo"/>
+                <constraint firstItem="gJE-WO-gZv" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.04:1" id="0Pu-Zr-uTo"/>
                 <constraint firstItem="xUG-ma-gep" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.05" id="1Qq-uZ-ABf"/>
                 <constraint firstItem="qvE-vW-5ig" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.09:1" id="1VS-b1-t7j"/>
                 <constraint firstItem="qvE-vW-5ig" firstAttribute="top" secondItem="gJE-WO-gZv" secondAttribute="bottom" id="2xc-v1-6Th"/>

@@ -12,8 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-- (IBAction)addAction:(id)sender;
-- (IBAction)dellAction:(id)sender;
 - (IBAction)addWayPoint:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *backBtn;
