@@ -8,6 +8,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainScreenViewController">
             <connections>
+                <outlet property="addBtn" destination="63P-B1-R5H" id="gfM-bl-qTC"/>
+                <outlet property="backBtn" destination="06G-K5-cVg" id="Lht-Ub-M7T"/>
                 <outlet property="tableView" destination="sKu-aj-rlt" id="2lk-dx-1vX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,8 +29,18 @@
                                     <rect key="frame" x="30" y="9" width="102" height="36"/>
                                     <state key="normal" backgroundImage="backPad"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMr-AA-Nos">
-                                    <rect key="frame" x="546" y="12" width="46" height="30"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63P-B1-R5H">
+                                    <rect key="frame" x="468" y="9" width="102" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <state key="normal" title="ADD">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="addWayPoint:" destination="-1" eventType="touchUpInside" id="iUO-ns-BEm"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMr-AA-Nos">
+                                    <rect key="frame" x="284" y="12" width="32" height="30"/>
                                     <state key="normal" title="ADD">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -36,13 +48,37 @@
                                         <action selector="addAction:" destination="-1" eventType="touchUpInside" id="hcy-7d-92A"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zQ-7A-M2t">
+                                    <rect key="frame" x="316" y="12" width="30" height="30"/>
+                                    <state key="normal" title="DEL">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="dellAction:" destination="-1" eventType="touchUpInside" id="alb-RI-POE"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.63137254899999995" green="0.0" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
+                                <constraint firstItem="0zQ-7A-M2t" firstAttribute="top" secondItem="xia-hu-3kE" secondAttribute="top" constant="12" id="3XT-Ij-C3O"/>
                                 <constraint firstItem="06G-K5-cVg" firstAttribute="leading" secondItem="xia-hu-3kE" secondAttribute="centerX" multiplier="0.1" id="DlK-D0-dpZ"/>
+                                <constraint firstItem="63P-B1-R5H" firstAttribute="trailing" secondItem="xia-hu-3kE" secondAttribute="centerX" multiplier="1.9" id="H4x-cD-4nW"/>
+                                <constraint firstItem="0zQ-7A-M2t" firstAttribute="leading" secondItem="UMr-AA-Nos" secondAttribute="trailing" id="R1z-2N-LTs"/>
+                                <constraint firstAttribute="bottom" secondItem="0zQ-7A-M2t" secondAttribute="bottom" constant="12" id="WDL-lk-Uxr"/>
+                                <constraint firstItem="63P-B1-R5H" firstAttribute="height" secondItem="06G-K5-cVg" secondAttribute="height" id="YfP-7C-2vH"/>
+                                <constraint firstItem="UMr-AA-Nos" firstAttribute="centerY" secondItem="xia-hu-3kE" secondAttribute="centerY" id="Zb1-Oe-5qo"/>
                                 <constraint firstItem="06G-K5-cVg" firstAttribute="centerY" secondItem="xia-hu-3kE" secondAttribute="centerY" id="bAQ-LJ-1jk"/>
+                                <constraint firstItem="63P-B1-R5H" firstAttribute="centerY" secondItem="xia-hu-3kE" secondAttribute="centerY" id="d1t-2a-MA9"/>
                                 <constraint firstItem="06G-K5-cVg" firstAttribute="width" secondItem="xia-hu-3kE" secondAttribute="width" multiplier="0.17" id="e4R-YV-rBy"/>
+                                <constraint firstItem="63P-B1-R5H" firstAttribute="width" secondItem="06G-K5-cVg" secondAttribute="width" id="kUy-PD-SSp"/>
+                                <constraint firstItem="UMr-AA-Nos" firstAttribute="centerX" secondItem="xia-hu-3kE" secondAttribute="centerX" id="rC0-dX-YkR"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="subviews">
+                                    <exclude reference="UMr-AA-Nos"/>
+                                    <exclude reference="0zQ-7A-M2t"/>
+                                </mask>
+                            </variation>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,38 +89,28 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="300" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sKu-aj-rlt">
-                    <rect key="frame" x="0.0" y="132" width="600" height="468"/>
+                    <rect key="frame" x="0.0" y="72" width="600" height="528"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="18k-p2-7Zx"/>
                         <outlet property="delegate" destination="-1" id="qkh-i7-E7o"/>
                     </connections>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From work to home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3MB-Rq-VaQ">
-                    <rect key="frame" x="0.0" y="72" width="600" height="60"/>
-                    <color key="backgroundColor" red="0.97953344669999998" green="0.97829060219999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="0.93702122039882496" blue="0.61330116872790508" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="3eh-nr-Uzp" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.12" id="14m-vq-VwF"/>
-                <constraint firstItem="3MB-Rq-VaQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Bej-ME-mXM"/>
                 <constraint firstItem="06G-K5-cVg" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.06" id="TRB-Fh-OuC"/>
-                <constraint firstAttribute="trailing" secondItem="3MB-Rq-VaQ" secondAttribute="trailing" id="WoH-tG-Ke2"/>
-                <constraint firstItem="3MB-Rq-VaQ" firstAttribute="top" secondItem="3eh-nr-Uzp" secondAttribute="bottom" id="WxI-u2-R8g"/>
                 <constraint firstItem="sKu-aj-rlt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Xyd-pE-04s"/>
                 <constraint firstAttribute="trailing" secondItem="sKu-aj-rlt" secondAttribute="trailing" id="Yli-xN-kAv"/>
                 <constraint firstItem="xia-hu-3kE" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.09" id="ZpU-aU-UEh"/>
                 <constraint firstItem="3eh-nr-Uzp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bKC-jx-CHk"/>
                 <constraint firstItem="3eh-nr-Uzp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="buD-MM-Lxk"/>
                 <constraint firstAttribute="trailing" secondItem="3eh-nr-Uzp" secondAttribute="trailing" id="ibk-A0-9G8"/>
-                <constraint firstItem="sKu-aj-rlt" firstAttribute="top" secondItem="3MB-Rq-VaQ" secondAttribute="bottom" id="kGO-e3-U0V"/>
-                <constraint firstItem="3MB-Rq-VaQ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" id="lQq-Ma-9Hr"/>
                 <constraint firstAttribute="bottom" secondItem="sKu-aj-rlt" secondAttribute="bottom" id="vw4-YX-1Rs"/>
+                <constraint firstItem="sKu-aj-rlt" firstAttribute="top" secondItem="3eh-nr-Uzp" secondAttribute="bottom" id="wvc-3D-cbG"/>
             </constraints>
+            <point key="canvasLocation" x="440" y="199"/>
         </view>
     </objects>
     <resources>

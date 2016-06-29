@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 
 #import "ViewController.h"
+#import "WayPoint.h"
 
 @interface MainViewController : UIViewController <popupDelegate> {
 	UIImagePickerController *ipc;
@@ -17,7 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
-@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+@property (weak, nonatomic) IBOutlet UITextField *infoLablEdit;
 
 @property (weak, nonatomic) IBOutlet UIView *switchView;
 @property (weak, nonatomic) IBOutlet UIView *weekView;
@@ -41,5 +42,13 @@
 
 - (IBAction)backAction:(id)sender;
 
+@property (strong) WayPoint *wayPoint;
+
+@property (strong) NSManagedObjectID *wayPointId;
+
+- (void)replaceWayPoint:(WayPoint *)newWayPoint;
+- (void)replaceWayPointID:(NSManagedObjectID *)newWayPointID;
+
+@property NSManagedObjectContext *managedContext;
 
 @end

@@ -27,6 +27,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *viewCancelBtn;
 
+@property (strong, nonatomic) NSDate *date;
+
 - (void)setDelegate:(id)delegate;
 
 - (void)chooseDate:(NSDate *)date;

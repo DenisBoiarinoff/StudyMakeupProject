@@ -14,14 +14,29 @@
     [super awakeFromNib];
     // Initialization code
 
-	[self.titleLabel.layer setBorderWidth:2];
-	[self.titleLabel.layer setBorderColor:[UIColor redColor].CGColor];
+	int parentWidth = [[UIScreen mainScreen] bounds].size.width;
+	int parentHeight = [[UIScreen mainScreen] bounds].size.height;
 
-	[self.sinceTime.layer setBorderWidth:2];
-	[self.sinceTime.layer setBorderColor:[UIColor redColor].CGColor];
+	NSString *deviceType = [UIDevice currentDevice].model;
 
-	[self.upToTime.layer setBorderWidth:2];
-	[self.upToTime.layer setBorderColor:[UIColor redColor].CGColor];
+	for (int i = 21; i < 28; i++) {
+		UILabel *lbl = [self viewWithTag:i];
+		if([deviceType isEqualToString:@"iPad"]) {
+			lbl.font = [UIFont systemFontOfSize: parentHeight * 0.03];
+		}
+		if ([deviceType isEqualToString:@"iPhone"]) {
+			lbl.font = [UIFont systemFontOfSize: parentHeight * 0.026];
+		}
+
+	}
+
+	CALayer *bottomBorder = [CALayer layer];
+
+	float borderY = parentHeight * 0.1;
+	bottomBorder.frame = CGRectMake(0, borderY, parentWidth, 1.0f);
+	bottomBorder.backgroundColor = [UIColor grayColor].CGColor;
+
+	[self.layer addSublayer:bottomBorder];
 
 }
 

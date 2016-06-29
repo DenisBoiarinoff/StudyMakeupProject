@@ -21,13 +21,14 @@
 		5979E78D1D1BF0E00028E8BD /* MainScreenViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5979E78B1D1BF0E00028E8BD /* MainScreenViewController~ipad.xib */; };
 		5979E78F1D1BF1170028E8BD /* MainScreenViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5979E78E1D1BF1170028E8BD /* MainScreenViewController~iphone.xib */; };
 		599B6CD51D1C1311005189A3 /* PointTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 599B6CD31D1C1311005189A3 /* PointTableViewCell.m */; };
-		599B6CD61D1C1311005189A3 /* PointTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599B6CD41D1C1311005189A3 /* PointTableViewCell.xib */; };
+		599B6CD61D1C1311005189A3 /* PointTableViewCell~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599B6CD41D1C1311005189A3 /* PointTableViewCell~ipad.xib */; };
 		59A7EB701D1AAF7C000C3F6F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7EB6E1D1AAF7B000C3F6F /* ViewController.m */; };
 		59A7EB711D1AAF7C000C3F6F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A7EB6F1D1AAF7B000C3F6F /* ViewController.xib */; };
 		59B493AE1D12A91000FE63EB /* MainViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59B493AD1D12A91000FE63EB /* MainViewController~ipad.xib */; };
 		59C707911D12551700494961 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C7078F1D12551700494961 /* MainViewController.m */; };
 		59C707921D12551700494961 /* MainViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59C707901D12551700494961 /* MainViewController~iphone.xib */; };
 		59C707941D12693200494961 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C707931D12693200494961 /* MapKit.framework */; };
+		59F123DF1D20E8B400851713 /* PointTableViewCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F123DE1D20E8B400851713 /* PointTableViewCell~iphone.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +66,7 @@
 		5979E78E1D1BF1170028E8BD /* MainScreenViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainScreenViewController~iphone.xib"; sourceTree = "<group>"; };
 		599B6CD21D1C1311005189A3 /* PointTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointTableViewCell.h; sourceTree = "<group>"; };
 		599B6CD31D1C1311005189A3 /* PointTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointTableViewCell.m; sourceTree = "<group>"; };
-		599B6CD41D1C1311005189A3 /* PointTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PointTableViewCell.xib; sourceTree = "<group>"; };
+		599B6CD41D1C1311005189A3 /* PointTableViewCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PointTableViewCell~ipad.xib"; sourceTree = "<group>"; };
 		59A7EB6D1D1AAF7A000C3F6F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		59A7EB6E1D1AAF7B000C3F6F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		59A7EB6F1D1AAF7B000C3F6F /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 		59C7078F1D12551700494961 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		59C707901D12551700494961 /* MainViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainViewController~iphone.xib"; sourceTree = "<group>"; };
 		59C707931D12693200494961 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		59F123DE1D20E8B400851713 /* PointTableViewCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PointTableViewCell~iphone.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +143,8 @@
 				5979E78E1D1BF1170028E8BD /* MainScreenViewController~iphone.xib */,
 				599B6CD21D1C1311005189A3 /* PointTableViewCell.h */,
 				599B6CD31D1C1311005189A3 /* PointTableViewCell.m */,
-				599B6CD41D1C1311005189A3 /* PointTableViewCell.xib */,
+				599B6CD41D1C1311005189A3 /* PointTableViewCell~ipad.xib */,
+				59F123DE1D20E8B400851713 /* PointTableViewCell~iphone.xib */,
 			);
 			path = StudyMakeupProject;
 			sourceTree = "<group>";
@@ -261,9 +264,10 @@
 				5979E78D1D1BF0E00028E8BD /* MainScreenViewController~ipad.xib in Resources */,
 				59B493AE1D12A91000FE63EB /* MainViewController~ipad.xib in Resources */,
 				590AEB041D125412005EC2B1 /* LaunchScreen.storyboard in Resources */,
-				599B6CD61D1C1311005189A3 /* PointTableViewCell.xib in Resources */,
+				599B6CD61D1C1311005189A3 /* PointTableViewCell~ipad.xib in Resources */,
 				590AEB011D125412005EC2B1 /* Assets.xcassets in Resources */,
 				5979E78F1D1BF1170028E8BD /* MainScreenViewController~iphone.xib in Resources */,
+				59F123DF1D20E8B400851713 /* PointTableViewCell~iphone.xib in Resources */,
 				59C707921D12551700494961 /* MainViewController~iphone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

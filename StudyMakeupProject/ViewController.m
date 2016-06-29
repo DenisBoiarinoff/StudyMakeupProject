@@ -16,9 +16,21 @@
 
 @synthesize delegate = _delegate;
 
+//@synthesize date;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+//	UIDatePicker *dp = [[UIDatePicker alloc] init];
+//
+//	self.viewDP = dp;
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	self.viewDP.date = self.date;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +51,13 @@
 }
 
 - (void) chooseDate:(NSDate *)date {
+	[self setDate:date];
+	NSLog(@"popup passed daet: %@", date);
+	if(!self.viewDP) {
+		NSLog(@"NO datepeacker");
+	}
 	self.viewDP.date = date;
+	NSLog(@"popup daet: %@", self.viewDP.date);
 }
 
 - (NSDate *)getDate {

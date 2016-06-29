@@ -20,14 +20,22 @@
 
 @property (strong, nonatomic) MainViewController *mvController;
 
+@property WayPoint *selectWayPoint;
+
 @end
 
 @implementation MainScreenViewController
 
- NSArray *tableData;
+NSArray *tableData;
+
+NSArray *imgArray;
 
 int parentWidth;
 int parentHeight;
+
+NSString *soundImgUrl = @"soundEventPad";
+NSString *popupImgUrl = @"popupEventPad";
+NSString *vibroImgUrl = @"vibroEventPad";
 
 static NSString *pointCellIdentifier = @"PointTableViewCell";
 
@@ -40,6 +48,8 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 	return context;
 }
 
+#pragma mark - View Life cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -50,28 +60,26 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 	parentWidth = [[UIScreen mainScreen] bounds].size.width;
 	parentHeight = [[UIScreen mainScreen] bounds].size.height;
 
-	NSLog(@"parent size: width - %d, height - %d",  parentWidth, parentHeight);
+//	NSLog(@"parent size: width - %d, height - %d",  parentWidth, parentHeight);
 
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 	self.tableView.estimatedRowHeight = 0.26 * parentHeight;
-//	tableData = [NSArray arrayWithObjects:@"Egg Benedict",
-//				 @"Mushroom Risotto",
-//				 @"Full Breakfast",
-//				 @"Hamburger",
-//				 @"Ham and Egg Sandwich",
-//				 @"Creme Brelee",
-//				 @"White Chocolate Donut",
-//				 @"Starbucks Coffee",
-//				 @"Vegetable Curry",
-//				 @"Instant Noodle with Egg",
-//				 @"Noodle with BBQ Pork",
-//				 @"Japanese Noodle with Pork",
-//				 @"Green Tea",
-//				 @"Thai Shrimp Cake",
-//				 @"Angry Birds Cake",
-//				 @"Ham and Cheese Panini",
-//				 nil];
-    // Do any additional setup after loading the view from its nib.
+	self.tableView.sectionHeaderHeight = 0.1 * parentHeight;
+
+	[self.tableView setSeparatorColor:[UIColor grayColor]];
+	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+
+	NSString *deviceType = [UIDevice currentDevice].model;
+
+	self.addBtn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
+	if ([deviceType isEqualToString:@"iPhone"]) {
+		self.backBtn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
+		float leftInsent = parentWidth * 0.07;
+		self.backBtn.titleEdgeInsets = UIEdgeInsetsMake(0, leftInsent, 0, 0);
+	}
+
+	imgArray = [[NSArray alloc] initWithObjects:vibroImgUrl, soundImgUrl, popupImgUrl, nil];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -79,22 +87,15 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 	[super viewDidAppear:animated];
 
 	// Fetch the devices from persistent data store
-
-	//	NSLog(@"ViewDidAppear");
-	//	NSLog(@"%@",self.countries);
-	//	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Country"];
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"WayPoint"];
-	[fetchRequest setResultType:NSDictionaryResultType];
+	[fetchRequest setResultType:NSManagedObjectResultType];
 	[fetchRequest setReturnsDistinctResults:YES];
+	[fetchRequest setIncludesPendingChanges:YES];
+
 	if (self.points) {
 		[self.points removeAllObjects];
 	}
-//	NSLog(@"Form coreData: \n%@\n", [self.context executeFetchRequest:fetchRequest error:nil]);
 	self.points = [[self.context executeFetchRequest:fetchRequest error:nil] mutableCopy];
-//	NSLog(@"From self.countryes: \n%@\n",self.points);
-
-//	WayPoint *p = [self.points objectAtIndex:0];
-//	NSLog(@"From waypoint: \n%@\n",p);
 
 	[self.tableView reloadData];
 }
@@ -103,6 +104,8 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Table View Delegate/Data source
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -117,38 +120,6 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	return 0.26 * parentHeight;
-//	return [indexPath row] * 20;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	//	NSManagedObjectContext *context = [self managedObjectContext];
-//
-//	if (editingStyle == UITableViewCellEditingStyleDelete) {
-//		// Delete object from database
-//		[self.myContext deleteObject:[self.countries objectAtIndex:indexPath.row]];
-//		//		NSLog(@"%ld",indexPath.row);
-//
-//		NSError *error = nil;
-//		if (![self.myContext save:&error]) {
-//			NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
-//			return;
-//		}
-//
-//		// Remove device from table view
-//		[self.countries removeObjectAtIndex:indexPath.row];
-//		[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//	}
-//	static NSString *simpleTableIdentifier = @"SimpleTableItem";
-//
-//	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-//
-//	if (cell == nil) {
-//		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-//	}
-//
-//	cell.textLabel.text = [tableData objectAtIndex:indexPath.row];
-//	return cell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -159,21 +130,144 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 		pointCell = [[PointTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:pointCellIdentifier];
 	}
 
+	NSLog(@"constraint %f", pointCell.titleWidth.constant );
+	NSLog(@"constraint %f", pointCell.titleWidth.multiplier );
+
+//	pointCell.titleWidth.constant = -1 * 0.3 * [[UIScreen mainScreen] bounds].size.width;
+//	pointCell.titleWidth.constant = - 1 * 0.1 * [[UIScreen mainScreen] bounds].size.width;
+//	pointCell.titleWidth.constant = -1 * 0.1 * [[UIScreen mainScreen] bounds].size.width;
+//	pointCell.titleWidth.constant = -1 * 1 * pointCell.titleLabel.frame.size.width;
+//	pointCell.titleWidth.constant = -1 * 2 * [[UIScreen mainScreen] bounds].size.width;
+//	pointCell.titleWidth.constant = +1 * 0.1 * [[UIScreen mainScreen] bounds].size.width;
+//	pointCell.titleWidth.constant = - pointCell.titleWidth.constant;
+	NSLog(@"constraint %f", pointCell.titleWidth.constant );
+
+
+
+
+
+	[pointCell.toEditBtn setTag:indexPath.row];
+
 	[pointCell.toEditBtn addTarget:self
 							action:@selector(toEditRecord:)
 				  forControlEvents:UIControlEventTouchUpInside];
 
-	NSLog(@"cell size: width - %f, height - %f",  pointCell.frame.size.width, pointCell.frame.size.height);
-
 	WayPoint* pnt = [self.points objectAtIndex:indexPath.row];
 
-//	NSString *title = [pnt title];
-//	NSString *title1 = [pnt valueForKey:@"title"];
-//	NSLog(@"TITLE: %@, %@",title, title1);
-//	NSLog(@"%@",pnt);
+	NSString *title = [pnt valueForKey:@"title"];
+	[pointCell.titleLabel setText:title];
 
-//	pointCell.titleLabel.text = [[self.points objectAtIndex:indexPath.row] title];
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"hh : mm"];
+
+	NSDate *sinceDate = [pnt valueForKey:@"sinceDate"];
+	NSString *strDate = [dateFormatter stringFromDate:sinceDate];
+	[pointCell.sinceTime setText:strDate];
+
+	NSDate *upToDate = [pnt valueForKey:@"upToDate"];
+	strDate = [dateFormatter stringFromDate:upToDate];
+	[pointCell.upToTime setText:strDate];
+
+	NSArray *weekDay = [pnt valueForKey:@"weeksDays"];
+	for (int i = 21; i < 28; i++) {
+		UILabel *dayLbl = [pointCell viewWithTag:i];
+		BOOL b = [[weekDay objectAtIndex:i - 21] boolValue];
+		if (b) {
+			[dayLbl setTextColor:[UIColor blackColor]];
+		} else {
+			[dayLbl setTextColor:[UIColor grayColor]];
+//			[dayLbl setTextColor:[UIColor colorWithRed:83 green:83 blue:83 alpha:1.]];
+		}
+	}
+
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	NSDateComponents *dateComponents = [gregorian components:(NSHourCalendarUnit  | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:sinceDate];
+	NSInteger hour = [dateComponents hour];
+	if (hour >= 12) {
+		[pointCell.sinceAMLabel setText:@"PM"];
+	} else {
+		[pointCell.sinceAMLabel setText:@"AM"];
+	}
+
+	dateComponents = [gregorian components:(NSHourCalendarUnit  | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:upToDate];
+	hour = [dateComponents hour];
+	if (hour >= 12) {
+		[pointCell.upToAMLabel setText:@"PM"];
+	} else {
+		[pointCell.upToAMLabel setText:@"AM"];
+	}
+
+	NSArray *features = [pnt valueForKey:@"features"];
+//	NSLog(@"%@", features);
+	for (int i = 101; i < 104; i++) {
+		UIImageView *imgView = [pointCell.titleView viewWithTag:i];
+		[imgView setHidden:NO];
+	}
+
+	int tag = 101;
+	for (int i = 0; i < 3; i++) {
+		UIImageView *imgView = [pointCell viewWithTag:tag];
+		BOOL b = [[features objectAtIndex:i] boolValue];
+//		NSLog(@"tag - %d, i - %d", tag, i);
+//		NSLog(@"b - %s",b ? "true" : "false");
+		if (!b) {
+			[imgView setHidden:YES];
+			tag++;
+		}
+	}
+
+	NSString *deviceType = [UIDevice currentDevice].model;
+
+	float multiplier = 0.885;
+
+	tag = 103;
+	for (int i = 0; i < 3; i++) {
+		BOOL b = [[features objectAtIndex:i] boolValue];
+		if (b) {
+			if ([deviceType isEqualToString:@"iPad"]) {
+				multiplier = multiplier - 0.05;
+			} else {
+				multiplier = multiplier - 0.071;
+			}
+
+			[[pointCell viewWithTag:tag] setImage:[UIImage imageNamed:[imgArray objectAtIndex:i]]];
+			tag--;
+		}
+	}
+
+	[pointCell removeConstraint:pointCell.titleWidth];
+
+	pointCell.titleWidth = [NSLayoutConstraint constraintWithItem:pointCell.titleLabel
+														attribute:NSLayoutAttributeWidth
+														relatedBy:NSLayoutRelationEqual
+														   toItem:pointCell.titleView
+														attribute:NSLayoutAttributeWidth
+													   multiplier:multiplier
+														 constant:0];
+
+	NSLog(@"constraint %f", pointCell.titleWidth.constant );
+
+	[pointCell addConstraint:pointCell.titleWidth];
+
 	return pointCell;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+	parentWidth = [[UIScreen mainScreen] bounds].size.width;
+	parentHeight = [[UIScreen mainScreen] bounds].size.height;
+
+	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, parentHeight * 0.1)];
+	/* Create custom view to display section header... */
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, parentHeight * 0.1)];
+	[label setFont:[UIFont boldSystemFontOfSize:parentHeight * 0.03]];
+	NSString *string = @"From work to home";
+	/* Section header is in 0th index... */
+	[label setText:string];
+	[label setTextAlignment:NSTextAlignmentCenter];
+	[view addSubview:label];
+	[view setBackgroundColor:[UIColor whiteColor]]; //your background color...
+	return view;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -181,8 +275,6 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	//    return self.countries.count;
-//	return [self.countries count];
 	return [self.points count];
 }
 
@@ -196,28 +288,65 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 }
 */
 
-- (IBAction)addAction:(id)sender {
+# pragma mark - Button Actions
 
-	WayPoint *newPoint = [NSEntityDescription insertNewObjectForEntityForName:@"WayPoint" inManagedObjectContext:self.context];
-	//	NSManagedObject *newEvent = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:self.context];
+- (IBAction)addAction:(id)sender {
+	WayPoint *newPoint1 = [NSEntityDescription insertNewObjectForEntityForName:@"WayPoint" inManagedObjectContext:self.context];
 
 	// If appropriate, configure the new managed object.
 	// Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-	newPoint.sinceDate = [NSDate date];
-	newPoint.upToDate = [NSDate date];
+	newPoint1.sinceDate = [NSDate date];
+	newPoint1.upToDate = [NSDate date];
+	newPoint1.title = @"On a bus stop just in time";
 
-	newPoint.title = @"Some test Title";
+	NSArray *activeDay1 = [[NSArray alloc] initWithObjects:[NSNumber numberWithBool:YES],
+						 [NSNumber numberWithBool:NO],
+						 [NSNumber numberWithBool:YES],
+						 [NSNumber numberWithBool:NO],
+						 [NSNumber numberWithBool:NO],
+						 [NSNumber numberWithBool:YES],
+						 [NSNumber numberWithBool:YES],
+						 nil];
+	newPoint1.weeksDays = [NSArray arrayWithArray:activeDay1];
+
 
 	NSMutableArray *numbersArray = [NSMutableArray array];
-
-	for (int i = 0; i < 5; i++)
-	  {
+	for (int i = 0; i < 2; i++) {
 		[numbersArray addObject:[NSNumber numberWithInteger:arc4random_uniform(100)]];
-	  }
+	}
+	newPoint1.myWayPoint = [NSArray arrayWithArray:numbersArray];
 
-	newPoint.features = [NSArray arrayWithArray:numbersArray];
-	newPoint.myWayPoint = [NSArray arrayWithArray:numbersArray];
-	newPoint.weeksDays = [NSArray arrayWithArray:numbersArray];
+	NSArray *activeFeatures1 = [[NSArray alloc] initWithObjects:[NSNumber numberWithBool:YES],
+							   [NSNumber numberWithBool:NO],
+							   [NSNumber numberWithBool:NO],
+							   nil];
+	newPoint1.features = [NSArray arrayWithArray:activeFeatures1];
+
+	WayPoint *newPoint2 = [NSEntityDescription insertNewObjectForEntityForName:@"WayPoint" inManagedObjectContext:self.context];
+
+	// If appropriate, configure the new managed object.
+	// Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
+	newPoint2.sinceDate = [NSDate date];
+	newPoint2.upToDate = [NSDate date];
+	newPoint2.title = @"Drink cofe with friends";
+
+	NSArray *activeDay2 = [[NSArray alloc] initWithObjects:[NSNumber numberWithBool:YES],
+						  [NSNumber numberWithBool:NO],
+						  [NSNumber numberWithBool:YES],
+						  [NSNumber numberWithBool:YES],
+						  [NSNumber numberWithBool:NO],
+						  [NSNumber numberWithBool:YES],
+						  [NSNumber numberWithBool:YES],
+						  nil];
+	newPoint2.weeksDays = [NSArray arrayWithArray:activeDay2];
+
+	newPoint2.myWayPoint = [NSArray arrayWithArray:numbersArray];
+
+	NSArray *activeFeatures2 = [[NSArray alloc] initWithObjects:[NSNumber numberWithBool:NO],
+							   [NSNumber numberWithBool:YES],
+							   [NSNumber numberWithBool:NO],
+							   nil];
+	newPoint2.features = [NSArray arrayWithArray:activeFeatures2];
 
 	// Save the context.
 	NSError *error = nil;
@@ -227,21 +356,61 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 		abort();
 	}
+	
 	[self.tableView reloadData];
+}
+
+- (IBAction)dellAction:(id)sender {
+
+	NSFetchRequest *allEntryes = [[NSFetchRequest alloc] init];
+	[allEntryes setEntity:[NSEntityDescription entityForName:@"WayPoint" inManagedObjectContext:self.context]];
+	[allEntryes setIncludesPropertyValues:NO]; //only fetch the managedObjectID
+
+	NSError *error = nil;
+	NSArray *entryes = [self.context executeFetchRequest:allEntryes error:&error];
+	if (error) {
+		NSLog(@"request rerror %@",error);
+	}
+	//error handling goes here
+	for (NSManagedObject *entry in entryes) {
+		[self.context deleteObject:entry];
+	}
+	NSError *saveError = nil;
+	[self.context save:&saveError];
+	if (saveError) {
+		NSLog(@"save rerror %@",saveError);
+	}
+	//more error handling here
+	[self.tableView reloadData];
+}
+
+- (IBAction)addWayPoint:(id)sender {
+
+	if(!self.mvController) {
+		MainViewController *secondView = [[MainViewController alloc] init];
+		self.mvController = secondView;
+	[self.mvController setManagedContext:self.context];
+	}
+
+	[self.mvController replaceWayPointID:nil];
+
+	[self.navigationController pushViewController:self.mvController animated:YES];
 }
 
 
 -(IBAction)toEditRecord:(id)sender{
 
-	if(!self.mvController){
+	if(!self.mvController) {
 		MainViewController *secondView = [[MainViewController alloc] init];
 		self.mvController = secondView;
+		[self.mvController setManagedContext:self.context];
 	}
 
-	//	NSLog(@"[sender tag]: %ld",[sender tag]);
-//	self.selectCountry = [self.countries objectAtIndex:[sender tag]];
+//	NSLog(@"[sender tag]: %ld",[sender tag]);
+	self.selectWayPoint = [self.points objectAtIndex:[sender tag]];
 
-//	[self.addCountryViewController replaceCountry:self.selectCountry];
+	[self.mvController replaceWayPointID:[self.selectWayPoint objectID]];
+//	NSLog(@"[sender tag]: %@",[self.selectWayPoint objectID]);
 
 	[self.navigationController pushViewController:self.mvController animated:YES];
 	

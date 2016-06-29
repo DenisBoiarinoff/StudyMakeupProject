@@ -23,8 +23,41 @@
 
 int activeBtnTag;
 
+@synthesize wayPoint;
+@synthesize wayPointId;
+
+- (NSManagedObjectContext *)managedObjectContext {
+	NSManagedObjectContext *context = nil;
+	id delegate = [[UIApplication sharedApplication] delegate];
+	if ([delegate performSelector:@selector(managedObjectContext)]) {
+		context = [delegate managedObjectContext];
+	}
+	return context;
+}
+
+- (void) replaceWayPoint:(WayPoint *)newWayPoint {
+	if (wayPoint) {
+		[self.wayPoint setValue:[newWayPoint valueForKey:@"title"] forKey:@"title"];
+		[self.wayPoint setValue:[newWayPoint valueForKey:@"sinceDate"] forKey:@"sinceDate"];
+		[self.wayPoint setValue:[newWayPoint valueForKey:@"upToDate"] forKey:@"upToDate"];
+		[self.wayPoint setValue:[newWayPoint valueForKey:@"weeksDays"] forKey:@"weeksDays"];
+		[self.wayPoint setValue:[newWayPoint valueForKey:@"myWayPoint"] forKey:@"myWayPoint"];
+		[self.wayPoint setValue:[newWayPoint valueForKey:@"features"] forKey:@"features"];
+	} else {
+		[self setWayPoint:newWayPoint];
+	}
+}
+
+- (void) replaceWayPointID:(NSManagedObjectID *)newWayPointID {
+	[self setWayPointId:newWayPointID];
+}
+
+#pragma mark - View Life cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+	NSLog(@"viewDidLoad");
 
 	if (!self.popupVC) {
 		self.popupVC = [[ViewController alloc] init];
@@ -34,37 +67,33 @@ int activeBtnTag;
 		self.popupVC.modalPresentationStyle = UIModalPresentationPopover;
 	}
 
-	int parentWidth = [[UIScreen mainScreen] bounds].size.width;
+//	int parentWidth = [[UIScreen mainScreen] bounds].size.width;
 	int parentHeight = [[UIScreen mainScreen] bounds].size.height;
 
-	NSLog(@"screen size: width - %d height - %d", parentWidth, parentHeight);
-
 	NSString *deviceType = [UIDevice currentDevice].model;
-	NSLog(@"%@",deviceType);
 
-
-	if([deviceType isEqualToString:@"iPad"]) {
-		self.infoLabel.font = [UIFont systemFontOfSize: parentHeight * 0.04	];
+	if ([deviceType isEqualToString:@"iPad"]) {
+		self.infoLablEdit.font = [UIFont systemFontOfSize: parentHeight * 0.04];
+	}
+	if ([deviceType isEqualToString:@"iPhone"]) {
+		self.infoLablEdit.font = [UIFont systemFontOfSize: parentHeight * 0.03];
 	}
 
+	self.infoLablEdit.adjustsFontSizeToFitWidth = true;
+
 	[self.sinceDate setTitle:@"00 : 00" forState:UIControlStateNormal];
+	NSLog(@"sinceDate text %@", [self.sinceDate.titleLabel text]);
 	[self.sinceDate setDate:[NSDate date]];
 	self.sinceDate.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.06];
 	self.sinceDate.titleLabel.adjustsFontSizeToFitWidth = true;
-//	[self.sinceDate.layer setBorderWidth:1];
-//	[self.sinceDate.layer setBorderColor:([UIColor blackColor]).CGColor];
-
 
 	[self.upToDate setTitle:@"00 : 00" forState:UIControlStateNormal];
+
 	[self.upToDate setDate:[NSDate date]];
 	self.upToDate.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.06];
 	self.upToDate.titleLabel.adjustsFontSizeToFitWidth = true;
 
 	NSString *platform = [self platformRawString];
-
-	NSString *iOSVersion = [[UIDevice currentDevice] systemVersion];
-	NSLog(@"%@",iOSVersion);
-	NSLog(@"%@",[self platformRawString]);
 
 	for (int i = 51; i < 58; i++) {
 		UIButton *btn = [self.view viewWithTag:i];
@@ -75,6 +104,19 @@ int activeBtnTag;
 			btn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
 		}
 
+	}
+
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	NSLog(@"viewWillAppear");
+
+	if (wayPointId) {
+		[self prepareViewForEdit];
+	} else {
+		[self prepareViewForCreating];
 	}
 
 }
@@ -106,6 +148,9 @@ int activeBtnTag;
 
 	UIButton *source = (UIButton *)sender;
 
+	NSLog(@"UIButton %@", [source.titleLabel text]);
+	NSLog(@"UIButton date %@", [source date]);
+
 	activeBtnTag = (int)[source tag];
 
 	[self.popupVC chooseDate:source.date];
@@ -133,7 +178,12 @@ int activeBtnTag;
 }
 
 - (IBAction)backAction:(id)sender {
-	[self.navigationController popViewControllerAnimated:YES];
+
+	if (wayPointId) {
+		[self backAndSaveRecord];
+	} else {
+		[self backAndCreateRecord];
+	}
 }
 
 #pragma mark - Popup protocol delegate
@@ -151,6 +201,11 @@ int activeBtnTag;
 
 	UIButton *btn = [self.view viewWithTag:activeBtnTag];
 	[btn setDate:self.curentDate];
+	if (activeBtnTag == 31) {
+		[wayPoint setValue:self.sinceDate.date forKey:@"sinceDate"];
+	} else {
+		[wayPoint setValue:self.upToDate.date forKey:@"upToDate"];
+	}
 	[btn setTitle:strDate forState:UIControlStateNormal];
 
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -198,6 +253,166 @@ int activeBtnTag;
 	// called when the Popover changes positon
 }
 
+# pragma mark - Text Field Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+	[theTextField resignFirstResponder];
+	return YES;
+}
+
+- (void) prepareViewForEdit {
+	NSError *fetchError = nil;
+	//	self.wayPoint = [self.managedContext existingObjectWithID:wayPointId error:&fetchError];
+	[self setWayPoint:[self.managedContext existingObjectWithID:wayPointId error:&fetchError]];
+
+	[self.infoLablEdit setText:[self.wayPoint valueForKey:@"title"]];
+
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"hh : mm"];
+
+	NSDate *sinceDate = [self.wayPoint valueForKey:@"sinceDate"];
+	NSString *strDate = [dateFormatter stringFromDate:sinceDate];
+	[self.sinceDate setTitle:strDate forState:UIControlStateNormal];
+	//	[self.sinceDate.titleLabel setText:strDate];
+	NSLog(@"sinceDate text %@", [self.sinceDate.titleLabel text]);
+	[self.sinceDate setDate:sinceDate];
+
+	NSDate *upToDate = [self.wayPoint valueForKey:@"upToDate"];
+	strDate = [dateFormatter stringFromDate:upToDate];
+	[self.upToDate setTitle:strDate forState:UIControlStateNormal];
+	//	[self.upToDate.titleLabel setText:strDate];
+	[self.upToDate setDate:upToDate];
+
+	NSArray *weekDay = [self.wayPoint valueForKey:@"weeksDays"];
+	for (int i = 51; i < 58; i++) {
+		UIButton *dayBtn = [self.view viewWithTag:i];
+		BOOL isSelected = [[weekDay objectAtIndex:i - 51] boolValue];
+		[dayBtn setSelected:isSelected];
+	}
+
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	NSDateComponents *dateComponents = [gregorian components:(NSHourCalendarUnit  | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:sinceDate];
+	NSInteger hour = [dateComponents hour];
+	if (hour >= 12) {
+		[self.sinceAMLbl setText:@"PM"];
+	} else {
+		[self.sinceAMLbl setText:@"AM"];
+	}
+
+	dateComponents = [gregorian components:(NSHourCalendarUnit  | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:upToDate];
+	hour = [dateComponents hour];
+	if (hour >= 12) {
+		[self.upToAMLbl setText:@"PM"];
+	} else {
+		[self.upToAMLbl setText:@"AM"];
+	}
+
+	NSArray *features = [self.wayPoint valueForKey:@"features"];
+//	NSLog(@"%@", features);
+	for (int i = 71; i < 74; i++) {
+		UIButton *dayBtn = [self.view viewWithTag:i];
+		BOOL isSelected = [[features objectAtIndex:i - 71] boolValue];
+		[dayBtn setSelected:isSelected];
+	}
+
+}
+
+- (void) prepareViewForCreating {
+
+	[self.infoLablEdit setText:@""];
+
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"hh : mm"];
+
+	[self.sinceDate setTitle:@"00 : 00" forState:UIControlStateNormal];
+	[self.sinceDate setDate:[NSDate date]];
+
+	[self.upToDate setTitle:@"00 : 00" forState:UIControlStateNormal];
+	[self.upToDate setDate:[NSDate date]];
+
+	for (int i = 51; i < 58; i++) {
+		UIButton *dayBtn = [self.view viewWithTag:i];
+		[dayBtn setSelected:false];
+	}
+
+	[self.sinceAMLbl setText:@"AM"];
+	[self.upToAMLbl setText:@"AM"];
+
+	for (int i = 71; i < 73; i++) {
+		UIButton *dayBtn = [self.view viewWithTag:i];
+		[dayBtn setSelected:false];
+	}
+}
+
+- (void) backAndSaveRecord {
+
+	if (self.managedContext) {
+		[wayPoint setValue:self.sinceDate.date forKey:@"sinceDate"];
+		[wayPoint setValue:self.upToDate.date forKey:@"upToDate"];
+		[wayPoint setValue:self.infoLablEdit.text forKey:@"title"];
+
+		NSMutableArray *weekArray = [[NSMutableArray alloc] init];
+
+		for (int i = 51; i < 58; i++) {
+			UIButton *btn = [self.view viewWithTag:i];
+			[weekArray addObject:[NSNumber numberWithBool:[btn isSelected]]];
+		}
+		[wayPoint setValue:weekArray forKey:@"weeksDays"];
+
+		NSMutableArray *features = [[NSMutableArray alloc] init];
+
+		for (int i = 71; i < 74; i++) {
+			UIButton *btn = [self.view viewWithTag:i];
+			[features addObject:[NSNumber numberWithBool:[btn isSelected]]];
+		}
+		[wayPoint setValue:features forKey:@"features"];
+	} else {
+		NSLog(@"!CONTEXT");
+	}
+
+	NSError *error = nil;
+	// Save the object to persistent store
+	if (![self.managedContext save:&error]) {
+		NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+	}
+
+	[self.navigationController popViewControllerAnimated:YES];
+
+}
+
+- (void) backAndCreateRecord {
+
+	NSManagedObject *newWayPoint = [NSEntityDescription insertNewObjectForEntityForName:@"WayPoint" inManagedObjectContext:self.managedContext];
+	[newWayPoint setValue:self.sinceDate.date forKey:@"sinceDate"];
+	[newWayPoint setValue:self.upToDate.date forKey:@"upToDate"];
+	[newWayPoint setValue:self.infoLablEdit.text forKey:@"title"];
+
+	NSMutableArray *weekArray = [[NSMutableArray alloc] init];
+
+	for (int i = 51; i < 58; i++) {
+		UIButton *btn = [self.view viewWithTag:i];
+		[weekArray addObject:[NSNumber numberWithBool:[btn isSelected]]];
+	}
+	[newWayPoint setValue:weekArray forKey:@"weeksDays"];
+
+	NSMutableArray *features = [[NSMutableArray alloc] init];
+
+	for (int i = 71; i < 74; i++) {
+		UIButton *btn = [self.view viewWithTag:i];
+		[features addObject:[NSNumber numberWithBool:[btn isSelected]]];
+	}
+	[newWayPoint setValue:features forKey:@"features"];
+
+	NSError *error = nil;
+	// Save the object to persistent store
+	if (![self.managedContext save:&error]) {
+		NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+	}
+
+	[self.navigationController popViewControllerAnimated:YES];
+
+
+}
 
 - (NSString *)platformRawString {
 	size_t size;
@@ -209,6 +424,7 @@ int activeBtnTag;
 	NSLog(@"%@",platform);
 	return platform;
 }
+
 - (NSString *)platformNiceString {
 	NSString *platform = [self platformRawString];
 	if ([platform isEqualToString:@"iPhone1,1"])    return @"iPhone 1G";

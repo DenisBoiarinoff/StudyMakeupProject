@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
-                <outlet property="infoLabel" destination="pEJ-Xv-zbk" id="1Og-7u-tqg"/>
+                <outlet property="infoLablEdit" destination="Pad-a0-TQo" id="8Yq-3V-elE"/>
                 <outlet property="navigationBar" destination="jV5-vu-3Oy" id="nNw-3Z-S4U"/>
                 <outlet property="sinceAMLbl" destination="S5l-Wz-b1b" id="aXx-QL-pDK"/>
                 <outlet property="sinceDate" destination="vam-Tf-02o" id="W2M-Dx-81B"/>
@@ -90,19 +90,21 @@
                             </constraints>
                             <state key="normal" backgroundImage="LocationBtnIpad"/>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On a bus stop just in time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="pEJ-Xv-zbk">
-                            <rect key="frame" x="30" y="16" width="474" height="62"/>
-                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="55"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pad-a0-TQo">
+                            <rect key="frame" x="30" y="27" width="474" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="rxQ-5Z-KhP"/>
+                            </connections>
+                        </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="YGV-Nb-Gb4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pEJ-Xv-zbk" secondAttribute="trailing" constant="25" id="I0u-z5-EQu"/>
                         <constraint firstItem="YGV-Nb-Gb4" firstAttribute="centerY" secondItem="cXs-L7-uvE" secondAttribute="centerY" multiplier="1.1" id="Vtx-h2-qWe"/>
-                        <constraint firstItem="pEJ-Xv-zbk" firstAttribute="centerY" secondItem="cXs-L7-uvE" secondAttribute="centerY" multiplier="1.1" id="eQO-ul-B16"/>
                         <constraint firstAttribute="trailing" secondItem="YGV-Nb-Gb4" secondAttribute="trailing" multiplier="1.05" id="nEy-dZ-fet"/>
+                        <constraint firstItem="YGV-Nb-Gb4" firstAttribute="leading" secondItem="Pad-a0-TQo" secondAttribute="trailing" constant="25" id="ody-fr-uBi"/>
+                        <constraint firstItem="Pad-a0-TQo" firstAttribute="centerY" secondItem="cXs-L7-uvE" secondAttribute="centerY" id="q8U-bP-NJT"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N0q-xj-LzH">
@@ -228,7 +230,7 @@
                                 <constraint firstItem="WRw-cX-zIF" firstAttribute="leading" secondItem="sTA-mc-mPf" secondAttribute="trailing" constant="4" id="xXD-Zr-K5f"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFn-Sk-pvB">
+                        <button opaque="NO" tag="72" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFn-Sk-pvB">
                             <rect key="frame" x="231" y="85" width="138" height="30"/>
                             <state key="normal" backgroundImage="soundPadBtn">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -238,7 +240,7 @@
                                 <action selector="eventBtnAction:" destination="-1" eventType="touchUpInside" id="TmL-kO-1TL"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcI-n9-rgu">
+                        <button opaque="NO" tag="73" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcI-n9-rgu">
                             <rect key="frame" x="389" y="85" width="138" height="30"/>
                             <state key="normal" backgroundImage="popupPadBtn">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -248,7 +250,7 @@
                                 <action selector="eventBtnAction:" destination="-1" eventType="touchUpInside" id="yxl-1q-Cg2"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l71-vi-GXq">
+                        <button opaque="NO" tag="71" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l71-vi-GXq">
                             <rect key="frame" x="73" y="85" width="138" height="30"/>
                             <state key="normal" backgroundImage="vibroPadBtn">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -352,10 +354,10 @@
                 <constraint firstItem="iOz-OL-n5A" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.045" id="9d9-jf-AzH"/>
                 <constraint firstItem="Fwc-qg-3mo" firstAttribute="leading" secondItem="fyl-6C-wAb" secondAttribute="leading" multiplier="3" id="AGV-yj-HHe"/>
                 <constraint firstItem="gfd-g6-P8M" firstAttribute="trailing" secondItem="fyl-6C-wAb" secondAttribute="trailing" id="AY6-94-wGK"/>
+                <constraint firstItem="Pad-a0-TQo" firstAttribute="leading" secondItem="fyl-6C-wAb" secondAttribute="leading" id="BoI-LG-3OZ"/>
                 <constraint firstItem="yC5-BJ-o8E" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.26:1" id="Cnc-CO-HBv"/>
                 <constraint firstItem="jV5-vu-3Oy" firstAttribute="top" secondItem="dGz-MG-Vmh" secondAttribute="bottom" id="DCm-K0-tic"/>
                 <constraint firstItem="TFn-Sk-pvB" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.05:1" id="DcB-ja-eDh"/>
-                <constraint firstItem="pEJ-Xv-zbk" firstAttribute="leading" secondItem="fyl-6C-wAb" secondAttribute="leading" id="EeS-8M-eaK"/>
                 <constraint firstItem="cXs-L7-uvE" firstAttribute="top" secondItem="jV5-vu-3Oy" secondAttribute="bottom" id="HYf-eo-M3f"/>
                 <constraint firstItem="N0q-xj-LzH" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.21:1" id="Hk5-Vd-ylV"/>
                 <constraint firstAttribute="bottom" secondItem="cgH-0n-x8G" secondAttribute="bottom" id="JPu-RV-P7p"/>
