@@ -205,30 +205,30 @@
                         </view>
                         <button opaque="NO" tag="72" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGj-Za-3R1">
                             <rect key="frame" x="213" y="77" width="174" height="30"/>
-                            <state key="normal" backgroundImage="soundPhoneBtn">
+                            <state key="normal" backgroundImage="soundPhoneBtnSelected">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
-                            <state key="selected" backgroundImage="soundPhoneBtnSelected"/>
+                            <state key="selected" backgroundImage="soundPhoneBtn"/>
                             <connections>
                                 <action selector="eventBtnAction:" destination="-1" eventType="touchUpInside" id="Rc6-bO-XQp"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="71" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0D0-1l-SPV">
                             <rect key="frame" x="36" y="77" width="174" height="30"/>
-                            <state key="normal" backgroundImage="vibroPhoneBtn">
+                            <state key="normal" backgroundImage="vibroPhoneBtnSelected">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
-                            <state key="selected" backgroundImage="vibroPhoneBtnSelected"/>
+                            <state key="selected" backgroundImage="vibroPhoneBtn"/>
                             <connections>
                                 <action selector="eventBtnAction:" destination="-1" eventType="touchUpInside" id="ROu-qk-HbN"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="73" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YwX-KP-nfD">
                             <rect key="frame" x="390" y="77" width="174" height="30"/>
-                            <state key="normal" backgroundImage="popupPhoneBtn">
+                            <state key="normal" backgroundImage="popupPhoneBtnDelected">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
-                            <state key="selected" backgroundImage="popupPhoneBtnDelected"/>
+                            <state key="selected" backgroundImage="popupPhoneBtn"/>
                             <connections>
                                 <action selector="eventBtnAction:" destination="-1" eventType="touchUpInside" id="cMe-WH-Hwy"/>
                             </connections>
@@ -262,8 +262,9 @@
                             </constraints>
                             <state key="normal" backgroundImage="LoactionsBtn"/>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZcA-KX-vWM">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Point Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZcA-KX-vWM">
                             <rect key="frame" x="30" y="21" width="432" height="30"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>

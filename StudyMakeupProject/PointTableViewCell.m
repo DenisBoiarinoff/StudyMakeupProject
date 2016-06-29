@@ -14,6 +14,9 @@
     [super awakeFromNib];
     // Initialization code
 
+//	[self.layer setBorderWidth:2];
+//	[self.layer setBorderColor:[UIColor blackColor].CGColor];
+
 	int parentWidth = [[UIScreen mainScreen] bounds].size.width;
 	int parentHeight = [[UIScreen mainScreen] bounds].size.height;
 
@@ -23,20 +26,27 @@
 		UILabel *lbl = [self viewWithTag:i];
 		if([deviceType isEqualToString:@"iPad"]) {
 			lbl.font = [UIFont systemFontOfSize: parentHeight * 0.03];
+			self.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.04];
 		}
 		if ([deviceType isEqualToString:@"iPhone"]) {
 			lbl.font = [UIFont systemFontOfSize: parentHeight * 0.026];
+			self.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.04];
 		}
 
 	}
 
-	CALayer *bottomBorder = [CALayer layer];
+	CALayer *titleBottomBorder = [CALayer layer];
 
 	float borderY = parentHeight * 0.1;
-	bottomBorder.frame = CGRectMake(0, borderY, parentWidth, 1.0f);
-	bottomBorder.backgroundColor = [UIColor grayColor].CGColor;
+	titleBottomBorder.frame = CGRectMake(0, borderY, parentWidth, 1.0f);
+	titleBottomBorder.backgroundColor = [UIColor grayColor].CGColor;
+	[self.layer addSublayer:titleBottomBorder];
 
-	[self.layer addSublayer:bottomBorder];
+	CALayer *cellBottomBorder = [CALayer layer];
+	borderY = parentHeight * 0.2555;
+	cellBottomBorder.frame = CGRectMake(0, borderY, parentWidth, 1.0f);
+	cellBottomBorder.backgroundColor = [UIColor grayColor].CGColor;
+	[self.layer addSublayer:cellBottomBorder];
 
 }
 

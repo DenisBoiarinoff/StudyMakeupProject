@@ -90,8 +90,9 @@
                             </constraints>
                             <state key="normal" backgroundImage="LocationBtnIpad"/>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pad-a0-TQo">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Point Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pad-a0-TQo">
                             <rect key="frame" x="30" y="27" width="474" height="30"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -232,30 +233,30 @@
                         </view>
                         <button opaque="NO" tag="72" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFn-Sk-pvB">
                             <rect key="frame" x="231" y="85" width="138" height="30"/>
-                            <state key="normal" backgroundImage="soundPadBtn">
+                            <state key="normal" backgroundImage="soundPadBtnSelected">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
-                            <state key="selected" backgroundImage="soundPadBtnSelected"/>
+                            <state key="selected" backgroundImage="soundPadBtn"/>
                             <connections>
                                 <action selector="eventBtnAction:" destination="-1" eventType="touchUpInside" id="TmL-kO-1TL"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="73" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcI-n9-rgu">
                             <rect key="frame" x="389" y="85" width="138" height="30"/>
-                            <state key="normal" backgroundImage="popupPadBtn">
+                            <state key="normal" backgroundImage="popupPadBtnSelected">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
-                            <state key="selected" backgroundImage="popupPadBtnSelected"/>
+                            <state key="selected" backgroundImage="popupPadBtn"/>
                             <connections>
                                 <action selector="eventBtnAction:" destination="-1" eventType="touchUpInside" id="yxl-1q-Cg2"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="71" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l71-vi-GXq">
                             <rect key="frame" x="73" y="85" width="138" height="30"/>
-                            <state key="normal" backgroundImage="vibroPadBtn">
+                            <state key="normal" backgroundImage="vibroPadBtnSelected">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
-                            <state key="selected" backgroundImage="vibroPadBtnSelected"/>
+                            <state key="selected" backgroundImage="vibroPadBtn"/>
                             <connections>
                                 <action selector="eventBtnAction:" destination="-1" eventType="touchUpInside" id="mc1-ZL-5gw"/>
                             </connections>

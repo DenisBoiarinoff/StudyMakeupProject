@@ -372,6 +372,23 @@ int activeBtnTag;
 
 - (void) backAndSaveRecord {
 
+	NSString *value = [self.infoLablEdit.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	if ([value isEqualToString:@""]) {
+		UIAlertController *alertController = [UIAlertController
+											  alertControllerWithTitle:@"Sorry but title is empty"
+											  message:@"We can not save record with emti title, please enter title."
+											  preferredStyle:UIAlertControllerStyleAlert];
+
+		UIAlertAction *notAvaliable = [UIAlertAction actionWithTitle:@"Okay"
+															   style:UIAlertActionStyleDefault
+															 handler:^(UIAlertAction * action) {
+															 }]; // 1
+		[alertController addAction:notAvaliable];
+
+		[self presentViewController:alertController animated:YES completion:nil];
+		return;
+	}
+
 	[self saveRecord];
 
 	[self.navigationController popViewControllerAnimated:YES];

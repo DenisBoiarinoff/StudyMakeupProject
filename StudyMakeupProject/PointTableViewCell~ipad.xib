@@ -215,12 +215,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="7Vw-zJ-Vxm">
-                                <rect key="frame" x="438" y="33" width="24" height="34"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="X6n-zO-Lb8">
                                 <rect key="frame" x="438" y="84" width="24" height="34"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
@@ -247,14 +241,23 @@
                                     <constraint firstAttribute="width" secondItem="vEf-3c-EPC" secondAttribute="height" multiplier="2:3" id="rG0-Uo-AI0"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="7Vw-zJ-Vxm">
+                                <rect key="frame" x="438" y="34" width="24" height="34"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vEf-3c-EPC" firstAttribute="top" secondItem="n6X-O1-9W6" secondAttribute="centerY" multiplier="0.46" id="61f-fU-4dd"/>
                             <constraint firstItem="X6n-zO-Lb8" firstAttribute="leading" secondItem="ltu-9q-EJI" secondAttribute="trailing" constant="20" id="7wX-LH-Dcu"/>
+                            <constraint firstItem="X6n-zO-Lb8" firstAttribute="centerY" secondItem="otV-qy-zcX" secondAttribute="centerY" id="Cpi-jO-W7i"/>
                             <constraint firstItem="G0a-Uf-f9b" firstAttribute="centerX" secondItem="n6X-O1-9W6" secondAttribute="centerX" multiplier="1.12" id="Dtf-Zt-ePU"/>
+                            <constraint firstItem="7Vw-zJ-Vxm" firstAttribute="centerY" secondItem="G0a-Uf-f9b" secondAttribute="centerY" id="GAE-36-Srj"/>
                             <constraint firstItem="Gn5-4S-mjv" firstAttribute="height" secondItem="n6X-O1-9W6" secondAttribute="height" multiplier="0.27" id="GIE-9J-z94"/>
                             <constraint firstItem="otV-qy-zcX" firstAttribute="width" secondItem="NnX-qQ-1vh" secondAttribute="width" id="Gcw-Yl-G8m"/>
+                            <constraint firstItem="7Vw-zJ-Vxm" firstAttribute="centerY" secondItem="n6X-O1-9W6" secondAttribute="centerY" id="IsX-Y6-Abn"/>
                             <constraint firstItem="G0a-Uf-f9b" firstAttribute="centerY" secondItem="n6X-O1-9W6" secondAttribute="centerY" multiplier="0.55" id="Lre-ep-gYH"/>
                             <constraint firstAttribute="trailing" secondItem="Gn5-4S-mjv" secondAttribute="trailing" id="RHE-u1-8Zq"/>
                             <constraint firstItem="ltu-9q-EJI" firstAttribute="width" secondItem="n6X-O1-9W6" secondAttribute="width" multiplier="0.25" id="SEV-nx-v1S"/>
@@ -274,6 +277,7 @@
                             <constraint firstItem="NnX-qQ-1vh" firstAttribute="centerY" secondItem="G0a-Uf-f9b" secondAttribute="centerY" id="jEh-a0-0Kk"/>
                             <constraint firstItem="otV-qy-zcX" firstAttribute="centerX" secondItem="n6X-O1-9W6" secondAttribute="centerX" multiplier="0.52" id="jM0-WK-5JS"/>
                             <constraint firstItem="7Vw-zJ-Vxm" firstAttribute="centerY" secondItem="G0a-Uf-f9b" secondAttribute="centerY" id="kOx-l8-Qcr"/>
+                            <constraint firstItem="7Vw-zJ-Vxm" firstAttribute="centerY" secondItem="NnX-qQ-1vh" secondAttribute="centerY" id="slW-nP-vff"/>
                             <constraint firstItem="G0a-Uf-f9b" firstAttribute="width" secondItem="n6X-O1-9W6" secondAttribute="width" multiplier="0.25" id="smd-96-vZL"/>
                             <constraint firstAttribute="bottom" secondItem="Gn5-4S-mjv" secondAttribute="bottom" id="xkQ-bQ-rwq"/>
                         </constraints>
@@ -285,6 +289,14 @@
                                 <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="IsX-Y6-Abn"/>
+                                <exclude reference="kOx-l8-Qcr"/>
+                                <exclude reference="slW-nP-vff"/>
+                                <exclude reference="Vbo-fA-2E5"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

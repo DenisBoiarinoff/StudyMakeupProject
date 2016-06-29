@@ -66,8 +66,8 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 	self.tableView.estimatedRowHeight = 0.26 * parentHeight;
 	self.tableView.sectionHeaderHeight = 0.1 * parentHeight;
 
-	[self.tableView setSeparatorColor:[UIColor grayColor]];
-	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+//	[self.tableView setSeparatorColor:[UIColor grayColor]];
+	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
 	NSString *deviceType = [UIDevice currentDevice].model;
 
@@ -122,6 +122,14 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 	return 0.26 * parentHeight;
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+//	NSLog(@"Cell clicked");
+//	NSLog(@"%ld",[indexPath row]);
+	PointTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+	[self toEditRecord:cell.toEditBtn];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	PointTableViewCell *pointCell = [tableView dequeueReusableCellWithIdentifier:pointCellIdentifier];
@@ -132,9 +140,9 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 
 	[pointCell.toEditBtn setTag:indexPath.row];
 
-	[pointCell.toEditBtn addTarget:self
-							action:@selector(toEditRecord:)
-				  forControlEvents:UIControlEventTouchUpInside];
+//	[pointCell.toEditBtn addTarget:self
+//							action:@selector(toEditRecord:)
+//				  forControlEvents:UIControlEventTouchUpInside];
 
 	WayPoint* pnt = [self.points objectAtIndex:indexPath.row];
 
