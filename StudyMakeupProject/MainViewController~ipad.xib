@@ -9,15 +9,19 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
             <connections>
+                <outlet property="backBtnL" destination="opf-Un-Shb" id="VmI-aa-USL"/>
                 <outlet property="infoLablEdit" destination="Pad-a0-TQo" id="8Yq-3V-elE"/>
                 <outlet property="navigationBar" destination="jV5-vu-3Oy" id="nNw-3Z-S4U"/>
+                <outlet property="popupBtn" destination="YcI-n9-rgu" id="aua-2n-Is5"/>
                 <outlet property="sinceAMLbl" destination="S5l-Wz-b1b" id="aXx-QL-pDK"/>
                 <outlet property="sinceDate" destination="vam-Tf-02o" id="W2M-Dx-81B"/>
                 <outlet property="sinceTextLbl" destination="WRQ-Dc-utX" id="4UK-cJ-FPs"/>
+                <outlet property="soundBtn" destination="TFn-Sk-pvB" id="1e2-zq-ago"/>
                 <outlet property="switchView" destination="gfd-g6-P8M" id="AQ5-W0-wPX"/>
                 <outlet property="upToAMLbl" destination="iOz-OL-n5A" id="9vv-iE-y7q"/>
                 <outlet property="upToDate" destination="yC5-BJ-o8E" id="ZhA-Ci-yA2"/>
                 <outlet property="upToTextLbl" destination="Fwc-qg-3mo" id="PRg-aC-ONl"/>
+                <outlet property="vibroBtn" destination="l71-vi-GXq" id="kPg-Ms-3Md"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Yl3-cm-Nkn"/>
                 <outlet property="weekView" destination="EWl-in-FTa" id="WM0-ou-189"/>
             </connections>
@@ -65,9 +69,12 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opf-Un-Shb">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opf-Un-Shb">
                             <rect key="frame" x="30" y="9" width="102" height="36"/>
-                            <state key="normal" backgroundImage="backPad"/>
+                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
+                            <state key="normal" title="Back" backgroundImage="backArrow_03">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <connections>
                                 <action selector="backAction:" destination="-1" eventType="touchUpInside" id="iZD-Re-eer"/>
                             </connections>
@@ -233,30 +240,36 @@
                         </view>
                         <button opaque="NO" tag="72" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFn-Sk-pvB">
                             <rect key="frame" x="231" y="85" width="138" height="30"/>
-                            <state key="normal" backgroundImage="soundPadBtnSelected">
+                            <state key="normal" title="sound" backgroundImage="featuresPadBtnPassive">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="selected" title="sound" backgroundImage="featuresPadBtnActive">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
-                            <state key="selected" backgroundImage="soundPadBtn"/>
                             <connections>
                                 <action selector="eventBtnAction:" destination="-1" eventType="touchUpInside" id="TmL-kO-1TL"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="73" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YcI-n9-rgu">
                             <rect key="frame" x="389" y="85" width="138" height="30"/>
-                            <state key="normal" backgroundImage="popupPadBtnSelected">
+                            <state key="normal" title="popup" backgroundImage="featuresPadBtnPassive">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="selected" title="popup" backgroundImage="featuresPadBtnActive">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
-                            <state key="selected" backgroundImage="popupPadBtn"/>
                             <connections>
                                 <action selector="eventBtnAction:" destination="-1" eventType="touchUpInside" id="yxl-1q-Cg2"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="71" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l71-vi-GXq">
                             <rect key="frame" x="73" y="85" width="138" height="30"/>
-                            <state key="normal" backgroundImage="vibroPadBtnSelected">
+                            <state key="normal" title="vibro" backgroundImage="featuresPadBtnPassive">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <state key="selected" title="vibro" backgroundImage="featuresPadBtnActive">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
-                            <state key="selected" backgroundImage="vibroPadBtn"/>
                             <connections>
                                 <action selector="eventBtnAction:" destination="-1" eventType="touchUpInside" id="mc1-ZL-5gw"/>
                             </connections>
@@ -313,7 +326,7 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UP  TO  DAE:" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Fwc-qg-3mo">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UP TO DATE:" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Fwc-qg-3mo">
                             <rect key="frame" x="90" y="55" width="182" height="36"/>
                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="90"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -403,12 +416,8 @@
         <image name="FullSwitchON" width="270" height="74"/>
         <image name="LocationBtnIpad" width="131" height="130"/>
         <image name="MultyBtnIpad" width="1374" height="145"/>
-        <image name="backPad" width="248" height="117"/>
-        <image name="popupPadBtn" width="357" height="111"/>
-        <image name="popupPadBtnSelected" width="357" height="111"/>
-        <image name="soundPadBtn" width="356" height="111"/>
-        <image name="soundPadBtnSelected" width="356" height="111"/>
-        <image name="vibroPadBtn" width="189" height="59"/>
-        <image name="vibroPadBtnSelected" width="360" height="111"/>
+        <image name="backArrow_03" width="249" height="117"/>
+        <image name="featuresPadBtnActive" width="360" height="111"/>
+        <image name="featuresPadBtnPassive" width="356" height="111"/>
     </resources>
 </document>

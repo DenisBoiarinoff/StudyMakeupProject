@@ -72,9 +72,14 @@ static NSString *pointCellIdentifier = @"PointTableViewCell";
 	NSString *deviceType = [UIDevice currentDevice].model;
 
 	self.addBtn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
+
 	if ([deviceType isEqualToString:@"iPhone"]) {
 		self.backBtn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
 		float leftInsent = parentWidth * 0.07;
+		self.backBtn.titleEdgeInsets = UIEdgeInsetsMake(0, leftInsent, 0, 0);
+	} else {
+		self.backBtn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
+		float leftInsent = parentWidth * 0.06;
 		self.backBtn.titleEdgeInsets = UIEdgeInsetsMake(0, leftInsent, 0, 0);
 	}
 

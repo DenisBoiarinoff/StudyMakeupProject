@@ -32,6 +32,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *sinceDate;
 @property (weak, nonatomic) IBOutlet UIButton *upToDate;
 
+@property (weak, nonatomic) IBOutlet UIButton *vibroBtn;
+@property (weak, nonatomic) IBOutlet UIButton *popupBtn;
+@property (weak, nonatomic) IBOutlet UIButton *soundBtn;
+
 @property (weak, nonatomic) IBOutlet UIButton *backBtnL;
 
 @property (strong, nonatomic) ViewController *popupVC;

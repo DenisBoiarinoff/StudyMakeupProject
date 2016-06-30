@@ -67,14 +67,29 @@ int activeBtnTag;
 		self.popupVC.modalPresentationStyle = UIModalPresentationPopover;
 	}
 	int parentHeight = [[UIScreen mainScreen] bounds].size.height;
+	int parentWidth = [[UIScreen mainScreen] bounds].size.width;
 
 	NSString *deviceType = [UIDevice currentDevice].model;
 
+	self.vibroBtn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
+	self.popupBtn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
+	self.soundBtn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
 	if ([deviceType isEqualToString:@"iPad"]) {
+		NSLog(@"IPAD!!!");
 		self.infoLablEdit.font = [UIFont systemFontOfSize: parentHeight * 0.04];
+		self.backBtnL.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
+		float leftInsent = parentWidth * 0.06;
+		self.backBtnL.titleEdgeInsets = UIEdgeInsetsMake(0, leftInsent, 0, 0);
+
+
 	}
 	if ([deviceType isEqualToString:@"iPhone"]) {
 		self.infoLablEdit.font = [UIFont systemFontOfSize: parentHeight * 0.03];
+		self.backBtnL.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
+		float leftInsent = parentWidth * 0.07;
+		self.backBtnL.titleEdgeInsets = UIEdgeInsetsMake(0, leftInsent, 0, 0);
+	} else {
+
 	}
 
 	self.infoLablEdit.adjustsFontSizeToFitWidth = true;
@@ -181,6 +196,7 @@ int activeBtnTag;
 #pragma mark - Popup protocol delegate
 
 - (void) cancelDate:(id) sender {
+	[self saveRecord];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 

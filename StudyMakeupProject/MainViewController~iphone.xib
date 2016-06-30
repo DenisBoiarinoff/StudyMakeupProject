@@ -13,12 +13,15 @@
                 <outlet property="infoLablEdit" destination="ZcA-KX-vWM" id="cZv-gb-ZLl"/>
                 <outlet property="mapView" destination="TgS-cc-VGu" id="i7d-HX-VAA"/>
                 <outlet property="navigationBar" destination="qvE-vW-5ig" id="cTE-Kc-gXH"/>
+                <outlet property="popupBtn" destination="YwX-KP-nfD" id="BNh-KF-3hU"/>
                 <outlet property="sinceAMLbl" destination="4fi-eo-PiE" id="eOo-Af-49c"/>
                 <outlet property="sinceDate" destination="BLK-b2-oUb" id="SzZ-kx-AaQ"/>
                 <outlet property="sinceTextLbl" destination="sYz-GX-Nqa" id="AXg-xt-FDw"/>
+                <outlet property="soundBtn" destination="IGj-Za-3R1" id="kUd-5S-WXR"/>
                 <outlet property="upToAMLbl" destination="xUG-ma-gep" id="aC2-j6-Q7C"/>
                 <outlet property="upToDate" destination="HYX-L5-t5c" id="ZYx-uG-Cd0"/>
                 <outlet property="upToTextLbl" destination="Mq5-WG-j84" id="rar-Tk-lS3"/>
+                <outlet property="vibroBtn" destination="0D0-1l-SPV" id="rSl-cj-ZFL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weekView" destination="Vqu-XZ-wiA" id="Dlv-sj-7e0"/>
             </connections>
@@ -408,9 +411,12 @@
                                 </mask>
                             </variation>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mD8-SW-BrS">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mD8-SW-BrS">
                             <rect key="frame" x="33" y="9" width="132" height="36"/>
-                            <state key="normal" backgroundImage="backPhone"/>
+                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
+                            <state key="normal" title="Back" backgroundImage="backBtn_03">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <connections>
                                 <action selector="backAction:" destination="-1" eventType="touchUpInside" id="QAA-y0-gnU"/>
                             </connections>
@@ -491,7 +497,7 @@
         <image name="FullSwitchON" width="270" height="74"/>
         <image name="LoactionsBtn" width="70" height="68"/>
         <image name="MultyBtn" width="570" height="76"/>
-        <image name="backPhone" width="140" height="68"/>
+        <image name="backBtn_03" width="129" height="68"/>
         <image name="popupPhoneBtn" width="357" height="111"/>
         <image name="popupPhoneBtnDelected" width="187" height="59"/>
         <image name="soundPhoneBtn" width="356" height="111"/>

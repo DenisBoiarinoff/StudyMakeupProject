@@ -25,9 +25,12 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xia-hu-3kE">
                             <rect key="frame" x="0.0" y="18" width="600" height="54"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06G-K5-cVg">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06G-K5-cVg">
                                     <rect key="frame" x="30" y="9" width="102" height="36"/>
-                                    <state key="normal" backgroundImage="backPad"/>
+                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
+                                    <state key="normal" title="Back" backgroundImage="backArrow_03">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63P-B1-R5H">
                                     <rect key="frame" x="468" y="9" width="102" height="36"/>
@@ -85,6 +88,6 @@
         </view>
     </objects>
     <resources>
-        <image name="backPad" width="248" height="117"/>
+        <image name="backArrow_03" width="249" height="117"/>
     </resources>
 </document>
