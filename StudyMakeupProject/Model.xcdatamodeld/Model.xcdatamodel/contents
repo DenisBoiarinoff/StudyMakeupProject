@@ -2,6 +2,7 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
     <entity name="WayPoint" representedClassName="WayPoint" syncable="YES">
         <attribute name="features" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="myWayPoint" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="sinceDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -9,6 +10,6 @@
         <attribute name="weeksDays" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <elements>
-        <element name="WayPoint" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="WayPoint" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

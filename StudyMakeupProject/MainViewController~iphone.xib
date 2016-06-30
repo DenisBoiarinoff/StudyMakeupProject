@@ -18,6 +18,7 @@
                 <outlet property="sinceDate" destination="BLK-b2-oUb" id="SzZ-kx-AaQ"/>
                 <outlet property="sinceTextLbl" destination="sYz-GX-Nqa" id="AXg-xt-FDw"/>
                 <outlet property="soundBtn" destination="IGj-Za-3R1" id="kUd-5S-WXR"/>
+                <outlet property="swithBtn" destination="eyW-uI-H6I" id="UU1-Fq-u0e"/>
                 <outlet property="upToAMLbl" destination="xUG-ma-gep" id="aC2-j6-Q7C"/>
                 <outlet property="upToDate" destination="HYX-L5-t5c" id="ZYx-uG-Cd0"/>
                 <outlet property="upToTextLbl" destination="Mq5-WG-j84" id="rar-Tk-lS3"/>

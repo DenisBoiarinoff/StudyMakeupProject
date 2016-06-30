@@ -36,6 +36,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *popupBtn;
 @property (weak, nonatomic) IBOutlet UIButton *soundBtn;
 
+@property (weak, nonatomic) IBOutlet UIButton *swithBtn;
+
 @property (weak, nonatomic) IBOutlet UIButton *backBtnL;
 
 @property (strong, nonatomic) ViewController *popupVC;

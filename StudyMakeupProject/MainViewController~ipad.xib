@@ -18,6 +18,7 @@
                 <outlet property="sinceTextLbl" destination="WRQ-Dc-utX" id="4UK-cJ-FPs"/>
                 <outlet property="soundBtn" destination="TFn-Sk-pvB" id="1e2-zq-ago"/>
                 <outlet property="switchView" destination="gfd-g6-P8M" id="AQ5-W0-wPX"/>
+                <outlet property="swithBtn" destination="6Go-pV-ZXt" id="uU6-dT-bEv"/>
                 <outlet property="upToAMLbl" destination="iOz-OL-n5A" id="9vv-iE-y7q"/>
                 <outlet property="upToDate" destination="yC5-BJ-o8E" id="ZhA-Ci-yA2"/>
                 <outlet property="upToTextLbl" destination="Fwc-qg-3mo" id="PRg-aC-ONl"/>
@@ -49,8 +50,8 @@
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Go-pV-ZXt">
                                     <rect key="frame" x="79" y="6" width="108" height="24"/>
-                                    <state key="normal" image="FullSwitchON"/>
-                                    <state key="selected" image="FullSwitchOFF"/>
+                                    <state key="normal" image="FullSwitchOFF"/>
+                                    <state key="selected" image="FullSwitchON"/>
                                     <connections>
                                         <action selector="activeSwitch:" destination="-1" eventType="touchUpInside" id="0Oy-x9-wsw"/>
                                     </connections>

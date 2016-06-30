@@ -2,7 +2,7 @@
 //  WayPoint+CoreDataProperties.m
 //  StudyMakeupProject
 //
-//  Created by Rhinoda3 on 24.06.16.
+//  Created by Rhinoda3 on 30.06.16.
 //  Copyright © 2016 Rhinoda. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,12 +13,13 @@
 
 @implementation WayPoint (CoreDataProperties)
 
-@dynamic title;
+@dynamic features;
+@dynamic myWayPoint;
 @dynamic sinceDate;
+@dynamic title;
 @dynamic upToDate;
 @dynamic weeksDays;
-@dynamic myWayPoint;
-@dynamic features;
+@dynamic isActive;
 
 @end
 

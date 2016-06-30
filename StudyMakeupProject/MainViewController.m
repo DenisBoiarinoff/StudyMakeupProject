@@ -270,6 +270,11 @@ int activeBtnTag;
 	NSError *fetchError = nil;
 	[self setWayPoint:[self.managedContext existingObjectWithID:wayPointId error:&fetchError]];
 
+	NSNumber *active = [self.wayPoint valueForKey:@"isActive"];
+	bool isActive = [active boolValue];
+//	NSLog(@"isActive = %@", isActive ? @"true" : @"false");
+	[self.swithBtn setSelected:isActive];
+
 	[self.infoLablEdit setText:[self.wayPoint valueForKey:@"title"]];
 
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -341,6 +346,9 @@ int activeBtnTag;
 	}
 	[newWayPoint setValue:features forKey:@"features"];
 
+	NSNumber *isActive = [NSNumber numberWithBool:YES];
+	[newWayPoint setValue:isActive forKey:@"isActive"];
+
 	NSError *error = nil;
 	// Save the object to persistent store
 	if (![self.managedContext save:&error]) {
@@ -374,6 +382,12 @@ int activeBtnTag;
 			[features addObject:[NSNumber numberWithBool:[btn isSelected]]];
 		}
 		[wayPoint setValue:features forKey:@"features"];
+
+		NSNumber *isActive = [NSNumber numberWithBool:[self.swithBtn isSelected]];
+//		bool active = [isActive boolValue];
+//		NSLog(@"SAVE: active - %@", active ? @"rtue" : @"false");
+		[wayPoint setValue:isActive forKey:@"isActive"];
+
 	} else {
 		NSLog(@"!CONTEXT");
 	}
