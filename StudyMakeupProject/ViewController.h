@@ -23,9 +23,9 @@
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *viewDP;
 
-@property (weak, nonatomic) IBOutlet UIButton *viewOkBtn;
-
-@property (weak, nonatomic) IBOutlet UIButton *viewCancelBtn;
+//@property (weak, nonatomic) IBOutlet UIButton *viewOkBtn;
+//
+//@property (weak, nonatomic) IBOutlet UIButton *viewCancelBtn;
 
 @property (strong, nonatomic) NSDate *date;
 

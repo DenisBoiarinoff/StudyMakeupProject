@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sinceTime;
 @property (weak, nonatomic) IBOutlet UILabel *upToTime;
-@property (weak, nonatomic) IBOutlet UILabel *weekDayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sinceAMLabel;
 @property (weak, nonatomic) IBOutlet UILabel *upToAMLabel;
 
@@ -23,8 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleWidth;
 
-@property (weak, nonatomic) IBOutlet UIImageView *firstImg;
-@property (weak, nonatomic) IBOutlet UIImageView *secondImg;
-@property (weak, nonatomic) IBOutlet UIImageView *thirdImg;
+//@property (weak, nonatomic) IBOutlet UIImageView *firstImg;
+//@property (weak, nonatomic) IBOutlet UIImageView *secondImg;
+//@property (weak, nonatomic) IBOutlet UIImageView *thirdImg;
 
 @end

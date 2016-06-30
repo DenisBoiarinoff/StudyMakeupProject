@@ -23,6 +23,8 @@
 
 int activeBtnTag;
 
+bool isFromPopup;
+
 @synthesize wayPoint;
 @synthesize wayPointId;
 
@@ -54,10 +56,16 @@ int activeBtnTag;
 
 #pragma mark - View Life cycle
 
+- (id)init {
+	self = [super init];
+	if (self)  {
+		isFromPopup = FALSE;
+	}
+	return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-	NSLog(@"viewDidLoad");
 
 	if (!self.popupVC) {
 		self.popupVC = [[ViewController alloc] init];
@@ -75,12 +83,13 @@ int activeBtnTag;
 	self.popupBtn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
 	self.soundBtn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
 	if ([deviceType isEqualToString:@"iPad"]) {
-		NSLog(@"IPAD!!!");
 		self.infoLablEdit.font = [UIFont systemFontOfSize: parentHeight * 0.04];
 		self.backBtnL.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
 		float leftInsent = parentWidth * 0.06;
 		self.backBtnL.titleEdgeInsets = UIEdgeInsetsMake(0, leftInsent, 0, 0);
 
+		self.sinceDate.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.04];
+		self.upToDate.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.04];
 
 	}
 	if ([deviceType isEqualToString:@"iPhone"]) {
@@ -88,6 +97,9 @@ int activeBtnTag;
 		self.backBtnL.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
 		float leftInsent = parentWidth * 0.07;
 		self.backBtnL.titleEdgeInsets = UIEdgeInsetsMake(0, leftInsent, 0, 0);
+
+		self.sinceDate.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.04];
+		self.upToDate.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.04];
 	} else {
 
 	}
@@ -95,7 +107,6 @@ int activeBtnTag;
 	self.infoLablEdit.adjustsFontSizeToFitWidth = true;
 
 	[self.sinceDate setTitle:@"00 : 00" forState:UIControlStateNormal];
-	NSLog(@"sinceDate text %@", [self.sinceDate.titleLabel text]);
 	[self.sinceDate setDate:[NSDate date]];
 	self.sinceDate.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.06];
 	self.sinceDate.titleLabel.adjustsFontSizeToFitWidth = true;
@@ -113,7 +124,6 @@ int activeBtnTag;
 		btn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.03];
 
 		if ([platform isEqualToString:@"iPhone4,1"]) {
-			NSLog(@"iPhone 4S");
 			btn.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.035];
 		}
 
@@ -124,7 +134,10 @@ int activeBtnTag;
 - (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 
-	NSLog(@"viewWillAppear");
+	if (isFromPopup) {
+		isFromPopup = false;
+		return;
+	}
 
 	if (wayPointId) {
 		[self prepareViewForEdit];
@@ -196,28 +209,27 @@ int activeBtnTag;
 #pragma mark - Popup protocol delegate
 
 - (void) cancelDate:(id) sender {
-	[self saveRecord];
+	isFromPopup = true;
+
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) selectDate:(id) sender {
+	isFromPopup = true;
+
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:@"hh : mm"];
 	self.curentDate = self.popupVC.getDate;
 	NSString *strDate = [dateFormatter stringFromDate:self.curentDate];
-	NSLog(@"%@", strDate);
 
 	UIButton *btn = [self.view viewWithTag:activeBtnTag];
 	[btn setDate:self.curentDate];
-
-	[self saveRecord];
 
 	[btn setTitle:strDate forState:UIControlStateNormal];
 
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 	NSDateComponents *dateComponents = [gregorian components:(NSHourCalendarUnit  | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:self.curentDate];
 	NSInteger hour = [dateComponents hour];
-	NSLog(@"%ld", (long)hour);
 
 	if ([btn tag] == 31) {
 		if (hour >= 12) {
@@ -242,7 +254,6 @@ int activeBtnTag;
 - (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController
 {
 	// called when a Popover is dismissed
-	NSLog(@"Popover was dismissed with external tap. Have a nice day!");
 }
 
 - (BOOL)popoverPresentationControllerShouldDismissPopover:(UIPopoverPresentationController *)popoverPresentationController
@@ -272,7 +283,6 @@ int activeBtnTag;
 
 	NSNumber *active = [self.wayPoint valueForKey:@"isActive"];
 	bool isActive = [active boolValue];
-//	NSLog(@"isActive = %@", isActive ? @"true" : @"false");
 	[self.swithBtn setSelected:isActive];
 
 	[self.infoLablEdit setText:[self.wayPoint valueForKey:@"title"]];
@@ -283,14 +293,11 @@ int activeBtnTag;
 	NSDate *sinceDate = [self.wayPoint valueForKey:@"sinceDate"];
 	NSString *strDate = [dateFormatter stringFromDate:sinceDate];
 	[self.sinceDate setTitle:strDate forState:UIControlStateNormal];
-	//	[self.sinceDate.titleLabel setText:strDate];
-	NSLog(@"sinceDate text %@", [self.sinceDate.titleLabel text]);
 	[self.sinceDate setDate:sinceDate];
 
 	NSDate *upToDate = [self.wayPoint valueForKey:@"upToDate"];
 	strDate = [dateFormatter stringFromDate:upToDate];
 	[self.upToDate setTitle:strDate forState:UIControlStateNormal];
-	//	[self.upToDate.titleLabel setText:strDate];
 	[self.upToDate setDate:upToDate];
 
 	NSArray *weekDay = [self.wayPoint valueForKey:@"weeksDays"];
@@ -318,7 +325,6 @@ int activeBtnTag;
 	}
 
 	NSArray *features = [self.wayPoint valueForKey:@"features"];
-//	NSLog(@"%@", features);
 	for (int i = 71; i < 74; i++) {
 		UIButton *dayBtn = [self.view viewWithTag:i];
 		BOOL isSelected = [[features objectAtIndex:i - 71] boolValue];
@@ -329,35 +335,50 @@ int activeBtnTag;
 
 - (void) prepareViewForCreating {
 
-	NSManagedObject *newWayPoint = [NSEntityDescription insertNewObjectForEntityForName:@"WayPoint" inManagedObjectContext:self.managedContext];
-	[newWayPoint setValue:[NSDate date] forKey:@"sinceDate"];
-	[newWayPoint setValue:[NSDate date] forKey:@"upToDate"];
-	[newWayPoint setValue:@"" forKey:@"title"];
+	[self.swithBtn setSelected:YES];
 
-	NSMutableArray *weekArray = [[NSMutableArray alloc] init];
-	for (int i = 1; i < 8; i++) {
-		[weekArray addObject:[NSNumber numberWithBool:false]];
-	}
-	[newWayPoint setValue:weekArray forKey:@"weeksDays"];
+	[self.infoLablEdit setText:@""];
 
-	NSMutableArray *features = [[NSMutableArray alloc] init];
-	for (int i = 1; i < 4; i++) {
-		[features addObject:[NSNumber numberWithBool:false]];
-	}
-	[newWayPoint setValue:features forKey:@"features"];
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"hh : mm"];
 
-	NSNumber *isActive = [NSNumber numberWithBool:YES];
-	[newWayPoint setValue:isActive forKey:@"isActive"];
+	NSDate *curentDate = [NSDate date];
 
-	NSError *error = nil;
-	// Save the object to persistent store
-	if (![self.managedContext save:&error]) {
-		NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+	NSString *strDate = [dateFormatter stringFromDate:curentDate];
+	[self.sinceDate setTitle:strDate forState:UIControlStateNormal];
+	[self.sinceDate setDate:curentDate];
+
+	strDate = [dateFormatter stringFromDate:curentDate];
+	[self.upToDate setTitle:strDate forState:UIControlStateNormal];
+	[self.upToDate setDate:curentDate];
+
+//	NSArray *weekDay = [self.wayPoint valueForKey:@"weeksDays"];
+	for (int i = 51; i < 58; i++) {
+		UIButton *dayBtn = [self.view viewWithTag:i];
+		[dayBtn setSelected:NO];
 	}
 
-	[self replaceWayPointID:[newWayPoint objectID]];
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	NSDateComponents *dateComponents = [gregorian components:(NSHourCalendarUnit  | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:curentDate];
+	NSInteger hour = [dateComponents hour];
+	if (hour >= 12) {
+		[self.sinceAMLbl setText:@"PM"];
+	} else {
+		[self.sinceAMLbl setText:@"AM"];
+	}
 
-	[self prepareViewForEdit];
+	dateComponents = [gregorian components:(NSHourCalendarUnit  | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:curentDate];
+	hour = [dateComponents hour];
+	if (hour >= 12) {
+		[self.upToAMLbl setText:@"PM"];
+	} else {
+		[self.upToAMLbl setText:@"AM"];
+	}
+
+	for (int i = 71; i < 74; i++) {
+		UIButton *dayBtn = [self.view viewWithTag:i];
+		[dayBtn setSelected:NO];
+	}
 }
 
 - (void) saveRecord {
@@ -384,12 +405,8 @@ int activeBtnTag;
 		[wayPoint setValue:features forKey:@"features"];
 
 		NSNumber *isActive = [NSNumber numberWithBool:[self.swithBtn isSelected]];
-//		bool active = [isActive boolValue];
-//		NSLog(@"SAVE: active - %@", active ? @"rtue" : @"false");
 		[wayPoint setValue:isActive forKey:@"isActive"];
 
-	} else {
-		NSLog(@"!CONTEXT");
 	}
 
 	NSError *error = nil;
@@ -398,6 +415,16 @@ int activeBtnTag;
 		NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
 	}
 
+}
+
+-(void) createRecord {
+	NSManagedObject *newWayPoint = [NSEntityDescription insertNewObjectForEntityForName:@"WayPoint" inManagedObjectContext:self.managedContext];
+
+	NSError *fetchError = nil;
+	[self replaceWayPointID:[newWayPoint objectID]];
+	[self setWayPoint:[self.managedContext existingObjectWithID:wayPointId error:&fetchError]];
+
+	[self saveRecord];
 }
 
 - (void) backAndSaveRecord {
@@ -419,7 +446,11 @@ int activeBtnTag;
 		return;
 	}
 
-	[self saveRecord];
+	if (wayPointId) {
+		[self saveRecord];
+	} else {
+		[self createRecord];
+	}
 
 	[self.navigationController popViewControllerAnimated:YES];
 
@@ -432,7 +463,6 @@ int activeBtnTag;
 	sysctlbyname("hw.machine", machine, &size, NULL, 0);
 	NSString *platform = [NSString stringWithUTF8String:machine];
 	free(machine);
-	NSLog(@"%@",platform);
 	return platform;
 }
 

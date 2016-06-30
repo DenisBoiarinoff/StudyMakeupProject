@@ -11,20 +11,15 @@
             <connections>
                 <outlet property="backBtnL" destination="opf-Un-Shb" id="VmI-aa-USL"/>
                 <outlet property="infoLablEdit" destination="Pad-a0-TQo" id="8Yq-3V-elE"/>
-                <outlet property="navigationBar" destination="jV5-vu-3Oy" id="nNw-3Z-S4U"/>
                 <outlet property="popupBtn" destination="YcI-n9-rgu" id="aua-2n-Is5"/>
                 <outlet property="sinceAMLbl" destination="S5l-Wz-b1b" id="aXx-QL-pDK"/>
                 <outlet property="sinceDate" destination="vam-Tf-02o" id="W2M-Dx-81B"/>
-                <outlet property="sinceTextLbl" destination="WRQ-Dc-utX" id="4UK-cJ-FPs"/>
                 <outlet property="soundBtn" destination="TFn-Sk-pvB" id="1e2-zq-ago"/>
-                <outlet property="switchView" destination="gfd-g6-P8M" id="AQ5-W0-wPX"/>
                 <outlet property="swithBtn" destination="6Go-pV-ZXt" id="uU6-dT-bEv"/>
                 <outlet property="upToAMLbl" destination="iOz-OL-n5A" id="9vv-iE-y7q"/>
                 <outlet property="upToDate" destination="yC5-BJ-o8E" id="ZhA-Ci-yA2"/>
-                <outlet property="upToTextLbl" destination="Fwc-qg-3mo" id="PRg-aC-ONl"/>
                 <outlet property="vibroBtn" destination="l71-vi-GXq" id="kPg-Ms-3Md"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Yl3-cm-Nkn"/>
-                <outlet property="weekView" destination="EWl-in-FTa" id="WM0-ou-189"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -50,8 +45,8 @@
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Go-pV-ZXt">
                                     <rect key="frame" x="79" y="6" width="108" height="24"/>
-                                    <state key="normal" image="FullSwitchOFF"/>
-                                    <state key="selected" image="FullSwitchON"/>
+                                    <state key="normal" image="FullSwitchON"/>
+                                    <state key="selected" image="FullSwitchOFF"/>
                                     <connections>
                                         <action selector="activeSwitch:" destination="-1" eventType="touchUpInside" id="0Oy-x9-wsw"/>
                                     </connections>
@@ -98,8 +93,8 @@
                             </constraints>
                             <state key="normal" backgroundImage="LocationBtnIpad"/>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Point Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pad-a0-TQo">
-                            <rect key="frame" x="30" y="27" width="474" height="30"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Point Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pad-a0-TQo">
+                            <rect key="frame" x="30" y="34" width="474" height="17"/>
                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -296,7 +291,7 @@
                     <rect key="frame" x="0.0" y="157" width="600" height="96"/>
                     <subviews>
                         <button opaque="NO" tag="32" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yC5-BJ-o8E">
-                            <rect key="frame" x="282" y="63" width="156" height="18"/>
+                            <rect key="frame" x="279" y="63" width="162" height="18"/>
                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="55"/>
                             <state key="normal" title="00 : 00">
                                 <color key="titleColor" red="0.63137254901960782" green="0.0" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
@@ -306,7 +301,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="31" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vam-Tf-02o">
-                            <rect key="frame" x="282" y="15" width="156" height="18"/>
+                            <rect key="frame" x="279" y="15" width="162" height="18"/>
                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="55"/>
                             <state key="normal" title="00 : 00">
                                 <color key="titleColor" red="0.63137254901960782" green="0.0" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
@@ -316,25 +311,25 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AM" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="S5l-Wz-b1b">
-                            <rect key="frame" x="448" y="3" width="27" height="43"/>
+                            <rect key="frame" x="451" y="3" width="27" height="43"/>
                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="38"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AM" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="iOz-OL-n5A">
-                            <rect key="frame" x="448" y="51" width="27" height="43"/>
+                            <rect key="frame" x="451" y="51" width="27" height="43"/>
                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="38"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UP TO DATE:" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Fwc-qg-3mo">
-                            <rect key="frame" x="90" y="55" width="182" height="36"/>
+                            <rect key="frame" x="90" y="55" width="179" height="36"/>
                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="90"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SINCE DATE:" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="WRQ-Dc-utX">
-                            <rect key="frame" x="90" y="8" width="182" height="36"/>
+                            <rect key="frame" x="90" y="8" width="179" height="36"/>
                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="90"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -370,7 +365,7 @@
                 <constraint firstItem="Fwc-qg-3mo" firstAttribute="leading" secondItem="fyl-6C-wAb" secondAttribute="leading" multiplier="3" id="AGV-yj-HHe"/>
                 <constraint firstItem="gfd-g6-P8M" firstAttribute="trailing" secondItem="fyl-6C-wAb" secondAttribute="trailing" id="AY6-94-wGK"/>
                 <constraint firstItem="Pad-a0-TQo" firstAttribute="leading" secondItem="fyl-6C-wAb" secondAttribute="leading" id="BoI-LG-3OZ"/>
-                <constraint firstItem="yC5-BJ-o8E" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.26:1" id="Cnc-CO-HBv"/>
+                <constraint firstItem="yC5-BJ-o8E" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.27:1" id="Cnc-CO-HBv"/>
                 <constraint firstItem="jV5-vu-3Oy" firstAttribute="top" secondItem="dGz-MG-Vmh" secondAttribute="bottom" id="DCm-K0-tic"/>
                 <constraint firstItem="TFn-Sk-pvB" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.05:1" id="DcB-ja-eDh"/>
                 <constraint firstItem="cXs-L7-uvE" firstAttribute="top" secondItem="jV5-vu-3Oy" secondAttribute="bottom" id="HYf-eo-M3f"/>
@@ -387,7 +382,7 @@
                 <constraint firstItem="YGV-Nb-Gb4" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.07:1" id="Tbb-fM-vlb"/>
                 <constraint firstAttribute="trailing" secondItem="dGz-MG-Vmh" secondAttribute="trailing" id="UhZ-gI-MDb"/>
                 <constraint firstItem="EWl-in-FTa" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9:1" id="Vey-NN-PTG"/>
-                <constraint firstItem="vam-Tf-02o" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.26:1" id="aCz-FH-S3G"/>
+                <constraint firstItem="vam-Tf-02o" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.27:1" id="aCz-FH-S3G"/>
                 <constraint firstItem="EWl-in-FTa" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.07:1" id="aud-de-e1H"/>
                 <constraint firstAttribute="trailing" secondItem="jV5-vu-3Oy" secondAttribute="trailing" id="bFl-dI-0bD"/>
                 <constraint firstItem="yC5-BJ-o8E" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.03:1" id="d4w-Z4-oRB"/>

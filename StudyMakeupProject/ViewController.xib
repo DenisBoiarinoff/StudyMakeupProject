@@ -9,9 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="viewCancelBtn" destination="ptw-47-iDe" id="xse-5r-sCn"/>
                 <outlet property="viewDP" destination="cZ4-3E-6Tb" id="u9s-BY-sp8"/>
-                <outlet property="viewOkBtn" destination="ZyD-Rl-4JH" id="BBl-pK-vaD"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

@@ -271,18 +271,14 @@
                 <constraint firstItem="hqL-mS-iJp" firstAttribute="width" secondItem="mJM-Ha-RLJ" secondAttribute="width" multiplier="0.86" identifier="widthOfTitle" id="x5v-N7-NjH"/>
             </constraints>
             <connections>
-                <outlet property="firstImg" destination="BP2-DJ-rvt" id="on7-tN-5PI"/>
-                <outlet property="secondImg" destination="Qte-wC-7jd" id="jix-bR-wRO"/>
                 <outlet property="sinceAMLabel" destination="wtp-uP-j6P" id="mdw-WR-Axv"/>
-                <outlet property="sinceTime" destination="HLi-Em-pLd" id="rwV-An-hyz"/>
-                <outlet property="thirdImg" destination="ftZ-bJ-hQO" id="EOE-Ir-iBN"/>
+                <outlet property="sinceTime" destination="HLi-Em-pLd" id="AZ1-Ui-a5T"/>
                 <outlet property="titleLabel" destination="hqL-mS-iJp" id="HsS-tf-J7A"/>
-                <outlet property="titleView" destination="BdA-pf-cBO" id="bA4-e0-Cqd"/>
+                <outlet property="titleView" destination="BdA-pf-cBO" id="DrD-fs-tgF"/>
                 <outlet property="titleWidth" destination="x5v-N7-NjH" id="r2G-ES-YAB"/>
-                <outlet property="toEditBtn" destination="RAl-x7-X5B" id="7EG-6z-uqe"/>
+                <outlet property="toEditBtn" destination="RAl-x7-X5B" id="GyB-TK-FmQ"/>
                 <outlet property="upToAMLabel" destination="NRG-sy-bx1" id="lAE-Nn-NmW"/>
-                <outlet property="upToTime" destination="99A-4Q-am1" id="ahy-lv-ugM"/>
-                <outlet property="weekDayLabel" destination="b1f-ax-yci" id="ACu-w3-b04"/>
+                <outlet property="upToTime" destination="99A-4Q-am1" id="BVp-VG-wHt"/>
             </connections>
             <point key="canvasLocation" x="459.5" y="32"/>
         </tableViewCell>

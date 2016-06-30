@@ -27,10 +27,14 @@
 		if([deviceType isEqualToString:@"iPad"]) {
 			lbl.font = [UIFont systemFontOfSize: parentHeight * 0.03];
 			self.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.04];
+			self.sinceTime.font  = [UIFont systemFontOfSize: parentHeight * 0.05];
+			self.upToTime.font  = [UIFont systemFontOfSize: parentHeight * 0.05];
 		}
 		if ([deviceType isEqualToString:@"iPhone"]) {
 			lbl.font = [UIFont systemFontOfSize: parentHeight * 0.026];
 			self.titleLabel.font = [UIFont systemFontOfSize: parentHeight * 0.04];
+			self.sinceTime.font  = [UIFont systemFontOfSize: parentHeight * 0.05];
+			self.upToTime.font  = [UIFont systemFontOfSize: parentHeight * 0.05];
 		}
 
 	}

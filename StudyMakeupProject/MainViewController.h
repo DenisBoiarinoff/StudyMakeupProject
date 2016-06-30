@@ -13,19 +13,11 @@
 #import "WayPoint.h"
 
 @interface MainViewController : UIViewController <popupDelegate> {
-	UIImagePickerController *ipc;
-}
 
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+}
 
 @property (weak, nonatomic) IBOutlet UITextField *infoLablEdit;
 
-@property (weak, nonatomic) IBOutlet UIView *switchView;
-@property (weak, nonatomic) IBOutlet UIView *weekView;
-@property (weak, nonatomic) IBOutlet UIView *navigationBar;
-
-@property (weak, nonatomic) IBOutlet UILabel *sinceTextLbl;
-@property (weak, nonatomic) IBOutlet UILabel *upToTextLbl;
 @property (weak, nonatomic) IBOutlet UILabel *sinceAMLbl;
 @property (weak, nonatomic) IBOutlet UILabel *upToAMLbl;
 

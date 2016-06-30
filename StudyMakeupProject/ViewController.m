@@ -16,8 +16,6 @@
 
 @synthesize delegate = _delegate;
 
-//@synthesize date;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
